@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome (optional icons like back arrow) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Custom Styling -->
+    <style>
+        :root {
+            /* Primary Colors */
+            --primary-color: #5624d0;
+            --primary-dark: #401f9c;
+            --secondary-color: #f7f9fc;
+
+            /* Text Colors */
+            --text-dark: #222;
+            --text-medium: #444;
+            --text-light: #555;
+
+            /* Fonts */
+            --font-primary: 'Inter', sans-serif;
+
+            /* Spacing */
+            --space-md: 30px;
+            --space-lg: 40px;
+            --space-xl: 60px;
+
+            /* Border Radius */
+            --border-radius: 16px;
+            --btn-radius: 8px;
+
+            /* Shadows */
+            --box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+
+            /* Transitions */
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: var(--secondary-color);
+            font-family: var(--font-primary);
+            margin: 0;
+            padding: 0;
+        }
+
+        .profile-container {
+            background-color: #ffffff;
+            padding: var(--space-lg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            max-width: 750px;
+            margin: var(--space-xl) auto;
+            animation: slideFadeIn 0.6s ease-in-out both;
+        }
+
+        h2 {
+            font-weight: 600;
+            margin-bottom: var(--space-md);
+            text-align: center;
+            color: var(--text-dark);
+        }
+
+        .table th {
+            width: 30%;
+            color: var(--text-medium);
+            font-weight: 500;
+            background-color: transparent;
+        }
+
+        .table td {
+            color: var(--text-light);
+        }
+
+        .table tr:hover {
+            background-color: #f0f4f8;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary {
+            display: block;
+            margin: var(--space-lg) auto 0;
+            padding: 12px 30px;
+            border-radius: var(--btn-radius);
+            font-weight: 500;
+            transition: var(--transition);
+            background-color: var(--primary-color);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: scale(1.03);
+        }
+
+        @keyframes slideFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive tweaks */
+        @media (max-width: 576px) {
+            .profile-container {
+                padding: 20px;
+            }
+
+            .table th,
+            .table td {
+                font-size: 14px;
+            }
+
+            .btn-primary {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="profile-container">
+            <h2>User Profile</h2>
+
+            <table class="table table-borderless">
+                <tr>
+                    <th>ID</th>
+                    <td th:text="${id}">1</td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td th:text="${name}">John Doe</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td th:text="${email}">john@example.com</td>
+                </tr>
+                <tr>
+                    <th>Contact</th>
+                    <td th:text="${contact}">9876543210</td>
+                </tr>
+                <tr>
+                    <th>Location</th>
+                    <td th:text="${location}">Chennai</td>
+                </tr>
+                <tr>
+                    <th>Role</th>
+                    <td th:text="${role}">USER</td>
+                </tr>
+            </table>
+
+            <a href="/userDashboard" class="btn btn-primary">
+                <i class="fa fa-arrow-left me-2"></i> Back to Dashboard
+            </a>
+        </div>
+    </div>
+
+</body>
+
+</html>

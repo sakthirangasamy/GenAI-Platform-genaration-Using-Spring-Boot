@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Items</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-top: 30px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        h2 {
+            color: #343a40;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #6c5ce7, #a29bfe);
+            border-radius: 3px;
+        }
+        .table {
+            margin-top: 20px;
+            border-collapse: separate;
+            border-spacing: 0 10px;
+        }
+        .table thead th {
+            border: none;
+            background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+            color: white;
+            font-weight: 500;
+        }
+        .table tbody tr {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.5s ease-out;
+            animation-fill-mode: both;
+        }
+        .table tbody tr:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .table tbody tr td {
+            vertical-align: middle;
+            border-top: none;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .btn-dashboard {
+            background: linear-gradient(135deg, #00b894 0%, #55efc4 100%);
+            border: none;
+            color: white;
+            font-weight: 500;
+            padding: 10px 25px;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-dashboard:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 20px rgba(0, 184, 148, 0.4);
+            color: white;
+        }
+        .btn-dashboard::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        .btn-dashboard:hover::before {
+            left: 100%;
+        }
+        .btn-danger {
+            background: linear-gradient(135deg, #ff7675 0%, #d63031 100%);
+            border: none;
+            border-radius: 10px;
+            padding: 8px 20px;
+            font-weight: 500;
+            box-shadow: 0 4px 10px rgba(214, 48, 49, 0.3);
+            transition: all 0.3s ease;
+        }
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 15px rgba(214, 48, 49, 0.4);
+        }
+        .status-badge {
+            padding: 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .status-pending {
+            background: linear-gradient(135deg, #fdcb6e 0%, #e17055 100%);
+            color: white;
+            animation: pulse 2s infinite;
+			padding: 10px;
+						border-radius: 8px;
+			
+        }
+        .status-completed {
+            background: linear-gradient(135deg, #00b894 0%, #55efc4 100%);
+            color: white;
+			padding: 10px;
+						border-radius: 8px;			
+        }
+        .status-rejected {
+            background: linear-gradient(135deg, #ff7675 0%, #d63031 100%);
+            color: white;
+			padding: 10px;
+			border-radius: 8px;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(253, 203, 110, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(253, 203, 110, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(253, 203, 110, 0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .table tbody tr {
+            animation-delay: calc(0.05s * var(--row-index));
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5 animate__animated animate__fadeIn">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="mb-0">Cart Items</h2>
+            <a th:href="@{/userDashboard}" class="btn btn-dashboard animate__animated animate__fadeInRight">
+                <i class="fas fa-arrow-left mr-2"></i> Back to Dashboard
+            </a>
+        </div>
+        
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Request ID</th>
+                    <th>User</th>
+                    <th>Course</th>
+                    <th>Course Level</th>
+                    <th>Course Category</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="req, iter : ${allCartItems}" th:style="'--row-index: ' + ${iter.index}" style="font-weight: bolder;">
+                    <td th:text="${req.id}"></td>
+                    <td th:text="${req.userName}"></td>
+                    <td th:text="${req.courseName}"></td>
+                    <td th:text="${req.courseLevel}"></td>
+                    <td th:text="${req.courseCategory}"></td>
+                    <td>
+                        <span th:switch="${req.courseStatus}" class="status-badge">
+                            <span th:case="'PENDING'" class="status-pending" th:text="${req.courseStatus}"></span>
+                            <span th:case="'COMPLETED'" class="status-completed" th:text="${req.courseStatus}"></span>
+                            <span th:case="*" class="status-rejected" th:text="${req.courseStatus}"></span>
+                        </span>
+                    </td>
+                    <td>
+                        <form th:action="@{/cart/delete/{id}(id=${req.id})}" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-danger animate__animated animate__pulse" >
+                                     <i class="fas fa-trash mr-1"></i> Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  
+</body>
+</html>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Course Names</title>
+    <!-- Include Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Include Animate.css for animation effects -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Include Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Include AOS for scroll animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-light: #4895ef;
+            --secondary: #3f37c9;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --success: #4cc9f0;
+            --warning: #f72585;
+            --gray: #6c757d;
+            --white: #ffffff;
+        }
+        
+        /* General page styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        /* Header style */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 25px;
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-content {
+            flex: 1;
+        }
+
+        .header h3 {
+            font-size: 2.2rem;
+            margin: 0;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+            z-index: 1;
+        }
+
+        /* Back to Dashboard button */
+        .back-button {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            z-index: 2;
+            margin-left: 20px;
+        }
+
+        .back-button i {
+            margin-right: 8px;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(-5px);
+        }
+
+        /* Main container */
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Course grid */
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        /* Course card */
+        .course-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .course-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-light), var(--warning));
+        }
+
+        .course-card-content {
+            padding: 25px;
+        }
+
+        .course-link {
+            text-decoration: none;
+            color: var(--dark);
+            display: block;
+        }
+
+        .course-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0 0 10px 0;
+            color: var(--dark);
+            transition: color 0.3s ease;
+        }
+
+        .course-card:hover .course-title {
+            color: var(--primary);
+        }
+
+        .course-meta {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .course-meta i {
+            margin-right: 8px;
+            color: var(--primary-light);
+        }
+
+        .course-icon {
+            font-size: 2.5rem;
+            color: var(--primary-light);
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .course-card:hover .course-icon {
+            transform: scale(1.1);
+        }
+
+        /* Course levels */
+        .course-levels span {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-right: 8px;
+            background: #f5f5f5;
+        }
+        
+        .course-levels i {
+            margin-right: 6px;
+            font-size: 12px;
+        }
+        
+        .level-beginner {
+            color: #2e7d32;
+            background: #e8f5e9;
+        }
+        
+        .level-intermediate {
+            color: #ff8f00;
+            background: #fff3e0;
+        }
+        
+        .level-advanced {
+            color: #c62828;
+            background: #ffebee;
+        }
+
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            grid-column: 1 / -1;
+        }
+
+        .empty-icon {
+            font-size: 4rem;
+            color: var(--gray);
+            margin-bottom: 20px;
+            opacity: 0.7;
+        }
+
+        .empty-title {
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin: 10px 0;
+            font-weight: 600;
+        }
+
+        .empty-text {
+            color: var(--gray);
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Floating action button */
+        .fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 20px rgba(67, 97, 238, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 100;
+            text-decoration: none;
+        }
+
+        .fab:hover {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 8px 25px rgba(67, 97, 238, 0.6);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h3 {
+                font-size: 1.8rem;
+            }
+
+            .header {
+                flex-direction: column;
+                padding: 15px;
+            }
+
+            .back-button {
+                margin: 15px 0 0 0;
+                align-self: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header animate__animated animate__fadeInDown">
+        <a href="/userDashboard" class="back-button animate__animated animate__fadeInLeft">
+            <i class="fas fa-arrow-left"></i> Back to Dashboard
+        </a>
+        <div class="header-content">
+            <h3>Explore Courses</h3>
+        </div>
+        <!-- Empty div for balance -->
+        <div style="width: 120px;"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Course Grid -->
+        <div class="course-grid">
+            <!-- Loop through each course name -->
+            <div th:each="name, iter : ${courseNames}" class="course-card animate__animated animate__fadeIn" 
+                 th:style="'animation-delay: ' + ${iter.index * 0.1} + 's'" data-aos="fade-up">
+                <a th:href="@{/courses/{name}/quiz(name=${name})}" class="course-link">	
+
+                    <div class="course-card-content">
+                        <div class="course-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h3 class="course-title" th:text="${name}"></h3>
+                        <p>Comprehensive learning materials and exercises</p>
+                        <div class="course-levels">
+                            <span class="level-beginner">
+                                <i class="fas fa-circle-notch"></i> Begin
+                            </span>
+                            <span class="level-intermediate">
+                                <i class="fas fa-arrow-up"></i> 
+                            </span>
+                            <span class="level-advanced">
+                                <i class="fas fa-bolt"></i> Advanced
+                            </span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Empty state if no courses -->
+            <div th:if="${courseNames.empty}" class="empty-state" data-aos="fade-up">
+                <div class="empty-icon animate-float">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h3 class="empty-title">No Courses Available Yet</h3>
+                <p class="empty-text">We're working hard to bring you new and exciting courses. Check back soon!</p>
+            </div>
+        </div>
+    </div>
+
+  
+
+    <!-- AOS initialization -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+    </script>
+</body>
+</html>

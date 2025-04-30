@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Courses | Learning Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary: #5624d0;
+            --secondary: #f7f9fa;
+            --dark: #1c1d1f;
+            --light: #fff;
+            --accent: #a435f0;
+            --success: #3fb950;
+            --warning: #ff9800;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f7f9fa;
+            color: var(--dark);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            text-align: center;
+            height: 100px;
+        }
+
+        .course-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            animation: fadeInUp 0.5s;
+            padding: 15px;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+        }
+
+        .course-image-container {
+            position: relative;
+            height: 180px;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(86, 36, 208, 0.8), rgba(164, 53, 240, 0.8));
+            border-radius: 8px;
+        }
+
+        .mini-player {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .play-button i {
+            color: var(--primary);
+            font-size: 24px;
+        }
+
+        .course-card:hover .play-button {
+            opacity: 1;
+        }
+
+        .course-details {
+            padding: 20px;
+        }
+
+        .course-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #6a6f73;
+        }
+
+        .course-level {
+            background: #f3f3f3;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+	
+		       .course-status {
+		          
+		           padding: 3px 8px;
+		           border-radius: 4px;
+		           font-size: 0.8rem;
+		           font-weight: 600;
+		           cursor: default;
+		       }
+		       
+		      
+		       
+
+        .status-completed {
+            background-color: rgba(63, 185, 80, 0.1);
+            color: var(--success);
+        }
+
+        .status-pending {
+            background-color: rgba(255, 152, 0, 0.1);
+            color: var(--warning);
+        }
+
+        .course-progress {
+            margin-top: 15px;
+        }
+
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+
+        .progress-bar-container {
+            height: 6px;
+            background: #f3f3f3;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--primary);
+            width: 0;
+            transition: width 0.1s ease;
+        }
+
+        .progress-bar.completed {
+            background: var(--success);
+        }
+
+        .course-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .btn-continue {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-continue:hover {
+            background: #4a1fb8;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background: rgba(86, 36, 208, 0.1);
+        }
+
+        .btn-back {
+            background: #5624d0;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+			font-weight: bolder;
+        }
+
+        .btn-back:hover {
+            background: #4a1fb8;
+        }
+
+        .btn-back i {
+            margin-right: 8px;
+        }
+
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-modal-content {
+            width: 80%;
+            max-width: 900px;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header animate__animated animate__fadeIn">
+        <div class="course-container">
+            <h1>My Learning Dashboard</h1>
+        </div>
+    </div>
+
+    <!-- Back Button -->
+    <div class="course-container">
+        <button class="btn-back" onclick="window.history.back()">
+            <i class="fas fa-arrow-left"></i> Back
+        </button>
+    </div>
+
+    <!-- Courses Grid -->
+    <div class="course-container">
+        <div class="course-grid">
+            <!-- Course Card - Repeat for each course -->
+            <div th:each="course : ${userCourses}" class="course-card" data-course-id="${course.id}">
+                <div class="course-image-container">
+                    <!-- Video preview container -->
+                    <video class="mini-player" preload="metadata" controls>
+                        <source th:src="@{ ${course.courseVideoPath}}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+
+                   
+                </div>
+
+                <div class="course-details">
+                    <h3 class="course-title" th:text="${course.courseName}">Course Title</h3>
+					<div class="course-meta">
+					    <span th:text="${course.courseCategory}">Category</span>
+					    <span class="course-level" th:text="${course.courseLevel}">Level</span>
+
+						<form th:action="@{'/courses/' + ${course.courseId} + '/complete'}" method="post" 
+						      style="display: inline;" class="status-form">
+						    <input type="hidden" name="userId" th:value="${course.userId}" />
+						    <button type="submit"
+						            th:text="${course.courseStatus}"
+						            th:classappend="${course.courseStatus == 'COMPLETED'} ? 'status-completed' : 'status-pending'"
+						            class="course-status"
+						            style="border: none; background: none; padding: 0; font: inherit; cursor: pointer;">
+						    </button>
+						</form>
+
+
+					</div>
+
+                    <div class="course-progress">
+                        <div class="progress-text">
+                            <span>Progress</span>
+                            <span class="progress-percentage">0%</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" style="width: 0"></div>
+                        </div>
+                    </div>
+
+                    <div class="course-actions">
+                        <button class="btn-continue" style="font-weight: bolder;">Continue</button>
+                        <button class="btn-outline">Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="video-modal">
+        <div class="video-modal-content">
+            <span class="close-modal" onclick="closeVideoModal()">&times;</span>
+            <video id="courseVideo" controls style="width: 100%; max-height: 80vh;">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+	<script>
+	document.addEventListener('DOMContentLoaded', function () {
+	    const courseCards = document.querySelectorAll('.course-card');
+
+	    courseCards.forEach(card => {
+	        const videoPlayer = card.querySelector('.mini-player');
+	        const progressBar = card.querySelector('.progress-bar');
+	        const progressPercentage = card.querySelector('.progress-percentage');
+	        const statusElement = card.querySelector('.course-status');
+	        const statusForm = card.querySelector('.status-form');
+
+	        // Skip if video/status missing
+	        if (!videoPlayer || !progressBar || !progressPercentage || !statusElement || !statusForm) {
+	            console.warn('Missing course elements for status tracking');
+	            return;
+	        }
+
+	        // Only track if not already completed
+	        if (statusElement.textContent.trim() !== 'COMPLETED') {
+	            videoPlayer.addEventListener('timeupdate', function () {
+	                if (videoPlayer.duration && !isNaN(videoPlayer.duration)) {
+	                    const progress = (videoPlayer.currentTime / videoPlayer.duration) * 100;
+	                    progressBar.style.width = progress + '%';
+	                    progressPercentage.textContent = Math.round(progress) + '%';
+
+	                    if (progress >= 100) {
+	                        progressBar.classList.add('completed');
+	                        progressPercentage.textContent = 'Completed';
+	                        statusForm.submit(); // ✅ Submit form to backend
+	                    }
+	                }
+	            });
+	        } else {
+	            // Already completed - show full bar
+	            progressBar.style.width = '100%';
+	            progressBar.classList.add('completed');
+	            progressPercentage.textContent = 'Completed';
+	        }
+	    });
+	});
+	</script>
+
+
+
+</body>
+</html>

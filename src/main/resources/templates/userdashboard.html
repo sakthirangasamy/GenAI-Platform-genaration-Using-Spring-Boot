@@ -1,0 +1,1557 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dashboard | AI Learning Platform</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+		rel="stylesheet">
+	<style>
+		:root {
+			--primary: #6c5ce7;
+			--primary-light: #a29bfe;
+			--secondary: #f5f6fa;
+			--accent: #fd79a8;
+			--dark: #2d3436;
+			--light: #ffffff;
+			--success: #00b894;
+			--warning: #fdcb6e;
+			--info: #0984e3;
+			--glass: rgba(255, 255, 255, 0.2);
+			--glass-border: rgba(255, 255, 255, 0.3);
+		}
+
+		body {
+			font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+			background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+			min-height: 100vh;
+			color: var(--dark);
+		}
+
+		.sidebar {
+			background: linear-gradient(135deg, var(--primary), var(--primary-light));
+			min-height: 100vh;
+			box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+			position: fixed;
+			width: 280px;
+			transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+			z-index: 1000;
+			backdrop-filter: blur(10px);
+			-webkit-backdrop-filter: blur(10px);
+			border-right: 1px solid var(--glass-border);
+		}
+
+		.sidebar-header {
+			padding: 25px;
+			color: white;
+			border-bottom: 1px solid var(--glass-border);
+		}
+
+		.sidebar-menu {
+			padding: 20px 15px;
+		}
+
+		.sidebar-menu .nav-link {
+			color: rgba(255, 255, 255, 0.9);
+			padding: 12px 20px;
+			margin: 8px 0;
+			border-radius: 8px;
+			transition: all 0.3s ease;
+			font-weight: 500;
+			display: flex;
+			align-items: center;
+			backdrop-filter: blur(5px);
+		}
+
+		.sidebar-menu .nav-link:hover {
+			background: var(--glass);
+			transform: translateX(5px);
+			color: white;
+		}
+
+		.sidebar-menu .nav-link.active {
+			background: var(--light);
+			color: var(--primary);
+			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+		}
+
+		.sidebar-menu .nav-link i {
+			width: 24px;
+			text-align: center;
+			margin-right: 12px;
+			font-size: 1.1rem;
+		}
+
+		.main-content {
+			margin-left: 280px;
+			padding: 25px;
+			transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+		}
+
+		.navbar {
+			background: var(--light);
+			box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+			padding: 15px 25px;
+			border-radius: 12px;
+			backdrop-filter: blur(10px);
+			-webkit-backdrop-filter: blur(10px);
+			border: 1px solid var(--glass-border);
+		}
+
+		.user-avatar {
+			width: 42px;
+			height: 42px;
+			border-radius: 12px;
+			object-fit: cover;
+			border: 2px solid var(--light);
+			box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+			transition: all 0.3s ease;
+		}
+
+		.user-avatar:hover {
+			transform: scale(1.1);
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+		}
+
+		.card {
+			border: none;
+			border-radius: 16px;
+			box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+			transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+			margin-bottom: 25px;
+			overflow: hidden;
+			background: var(--light);
+			backdrop-filter: blur(10px);
+			-webkit-backdrop-filter: blur(10px);
+			border: 1px solid var(--glass-border);
+		}
+
+		.card:hover {
+			transform: translateY(-8px);
+			box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+		}
+
+		.card-header {
+			background: transparent;
+			border-bottom: 1px solid var(--glass-border);
+			padding: 20px 25px;
+			font-weight: 600;
+		}
+
+		.course-card {
+			position: relative;
+			overflow: hidden;
+			border: none;
+		}
+
+		.course-img {
+			height: 160px;
+			object-fit: cover;
+			transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		}
+
+		.course-card:hover .course-img {
+			transform: scale(1.1);
+		}
+
+		.course-badge {
+			position: absolute;
+			top: 12px;
+			right: 12px;
+			background-color: var(--success);
+			color: white;
+			padding: 4px 10px;
+			border-radius: 20px;
+			font-size: 0.75rem;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+		}
+
+		.progress {
+			height: 10px;
+			border-radius: 10px;
+			background-color: rgba(108, 92, 231, 0.1);
+		}
+
+		.progress-bar {
+			background: linear-gradient(90deg, var(--primary), var(--accent));
+			border-radius: 10px;
+		}
+
+		.stats-card {
+			border-radius: 16px;
+			overflow: hidden;
+			color: white;
+			position: relative;
+			isolation: isolate;
+		}
+
+		.stats-card::after {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background: linear-gradient(135deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2));
+			z-index: -1;
+		}
+
+		.stats-card i {
+			font-size: 2.5rem;
+			opacity: 0.8;
+			transition: all 0.3s ease;
+		}
+
+		.stats-card:hover i {
+			transform: scale(1.1);
+			opacity: 1;
+		}
+
+
+		.chatbot-btn {
+			position: fixed;
+			bottom: 30px;
+			right: 30px;
+			width: 70px;
+			height: 70px;
+			border-radius: 50%;
+			background: linear-gradient(135deg, var(--primary), var(--accent));
+			color: white;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			box-shadow: 0 10px 30px rgba(108, 92, 231, 0.4);
+			cursor: pointer;
+			transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+			z-index: 1000;
+			animation: pulse 2s infinite, floating 4s ease-in-out infinite;
+			border: none;
+			outline: none;
+		}
+
+		.chatbot-btn:hover {
+			transform: scale(1.1) translateY(-5px);
+			box-shadow: 0 15px 40px rgba(108, 92, 231, 0.6);
+		}
+
+		.chatbot-btn i {
+			font-size: 1.8rem;
+			transition: all 0.3s ease;
+		}
+
+		.chatbot-btn:hover i {
+			transform: rotate(10deg);
+		}
+
+		@keyframes pulse {
+			0% {
+				box-shadow: 0 0 0 0 rgba(108, 92, 231, 0.4);
+			}
+
+			70% {
+				box-shadow: 0 0 0 15px rgba(108, 92, 231, 0);
+			}
+
+			100% {
+				box-shadow: 0 0 0 0 rgba(108, 92, 231, 0);
+			}
+		}
+
+		@keyframes floating {
+			0% {
+				transform: translateY(0px);
+			}
+
+			50% {
+				transform: translateY(-10px);
+			}
+
+			100% {
+				transform: translateY(0px);
+			}
+		}
+
+		.ripple {
+			position: relative;
+			overflow: hidden;
+		}
+
+		.ripple:after {
+			content: "";
+			display: block;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			pointer-events: none;
+			background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+			background-repeat: no-repeat;
+			background-position: 50%;
+			transform: scale(10, 10);
+			opacity: 0;
+			transition: transform .5s, opacity 1s;
+		}
+
+		.ripple:active:after {
+			transform: scale(0, 0);
+			opacity: 0.3;
+			transition: 0s;
+		}
+
+		.bot-message .bg-light {
+			background-color: #f8f9fa !important;
+			border-radius: 18px 18px 18px 0 !important;
+		}
+
+		.user-message .bg-primary {
+			border-radius: 18px 18px 0 18px !important;
+		}
+
+		.chat-container {
+			scrollbar-width: thin;
+			scrollbar-color: var(--primary) #f1f1f1;
+		}
+
+		.chat-container::-webkit-scrollbar {
+			width: 6px;
+		}
+
+		.chat-container::-webkit-scrollbar-track {
+			background: #f1f1f1;
+		}
+
+		.chat-container::-webkit-scrollbar-thumb {
+			background-color: var(--primary);
+			border-radius: 6px;
+		}
+
+		@keyframes pulse {
+			0% {
+				box-shadow: 0 0 0 0 rgba(108, 92, 231, 0.4);
+			}
+
+			70% {
+				box-shadow: 0 0 0 20px rgba(108, 92, 231, 0);
+			}
+
+			100% {
+				box-shadow: 0 0 0 0 rgba(108, 92, 231, 0);
+			}
+		}
+
+		@keyframes floating {
+			0% {
+				transform: translateY(0px);
+			}
+
+			50% {
+				transform: translateY(-15px);
+			}
+
+			100% {
+				transform: translateY(0px);
+			}
+		}
+
+		.list-group-item {
+			border: none;
+			border-radius: 12px !important;
+			margin-bottom: 10px;
+			transition: all 0.3s ease;
+			backdrop-filter: blur(5px);
+			background: var(--glass);
+			border: 1px solid var(--glass-border);
+		}
+
+		.list-group-item:hover {
+			transform: translateX(5px);
+			background: var(--light);
+		}
+
+		.dropdown-menu {
+			border: none;
+			border-radius: 12px;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+			padding: 10px;
+			backdrop-filter: blur(10px);
+			background: var(--glass);
+			border: 1px solid var(--glass-border);
+		}
+
+		.dropdown-item {
+			border-radius: 8px;
+			padding: 8px 15px;
+			transition: all 0.2s ease;
+		}
+
+		.dropdown-item:hover {
+			background: rgba(108, 92, 231, 0.1);
+			color: var(--primary);
+		}
+
+		.btn-primary {
+			background: linear-gradient(135deg, var(--primary), var(--primary-light));
+			border: none;
+			border-radius: 8px;
+			padding: 8px 20px;
+			font-weight: 500;
+			transition: all 0.3s ease;
+		}
+
+		.btn-primary:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
+		}
+
+		.text-muted {
+			color: rgba(45, 52, 54, 0.7) !important;
+		}
+
+		@media (max-width: 992px) {
+			.sidebar {
+				transform: translateX(-100%);
+				width: 280px;
+			}
+
+			.sidebar.active {
+				transform: translateX(0);
+			}
+
+			.main-content {
+				margin-left: 0;
+			}
+
+			.navbar-toggler {
+				display: block;
+			}
+		}
+
+		/* Custom scrollbar */
+		::-webkit-scrollbar {
+			width: 8px;
+		}
+
+		::-webkit-scrollbar-track {
+			background: rgba(108, 92, 231, 0.1);
+			border-radius: 10px;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background: linear-gradient(var(--primary), var(--primary-light));
+			border-radius: 10px;
+		}
+
+		/* Ripple effect */
+		.ripple {
+			position: relative;
+			overflow: hidden;
+		}
+
+		.ripple:after {
+			content: "";
+			display: block;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			pointer-events: none;
+			background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+			background-repeat: no-repeat;
+			background-position: 50%;
+			transform: scale(10, 10);
+			opacity: 0;
+			transition: transform .5s, opacity 1s;
+		}
+
+		.ripple:active:after {
+			transform: scale(0, 0);
+			opacity: 0.3;
+			transition: 0s;
+		}
+
+		/* Glow effect */
+		.glow {
+			animation: glow 2s ease-in-out infinite alternate;
+		}
+
+		@keyframes glow {
+			from {
+				box-shadow: 0 0 5px rgba(108, 92, 231, 0.5);
+			}
+
+			to {
+				box-shadow: 0 0 20px rgba(108, 92, 231, 0.8);
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<!-- Sidebar Toggle Button (Mobile) -->
+	<button class="navbar-toggler d-lg-none position-fixed btn btn-primary shadow-sm"
+		style="z-index: 1100; top: 20px; left: 20px; padding: 8px 12px;" onclick="toggleSidebar()">
+		<i class="fas fa-bars"></i>
+	</button>
+
+	<!-- Sidebar -->
+	<div class="sidebar">
+		<div class="sidebar-header">
+			<h4 class="mb-0"><i class="fas fa-brain me-2"></i>AI Learn</h4>
+			<small class="opacity-75">Interactive Learning Platform</small>
+		</div>
+		<div class="sidebar-menu">
+			<ul class="nav flex-column">
+				<li class="nav-item">
+					<a class="nav-link active ripple" href="#">
+						<i class="fas fa-tachometer-alt"></i> Dashboard
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link ripple" href="/my-courses">
+						<i class="fas fa-book-open"></i> My Courses
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link ripple" th:href="@{/names}">
+						<i class="fas fa-question-circle"></i> Quizzes
+					</a>
+				</li>
+
+				</li>
+				<li class="nav-item">
+					<a class="nav-link ripple" href="/my-certificates">
+						<i class="fas fa-certificate"></i> Certificates
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link ripple" href="/cart">
+						<i class="fas fa-chalkboard-teacher"></i> Manage Course
+					</a>
+				</li>
+
+
+				<li class="nav-item mt-4">
+					<a class="nav-link text-danger ripple" href="/userlogin">
+						<i class="fas fa-sign-out-alt"></i> Logout
+					</a>
+				</li>
+			</ul>
+		</div>
+
+		<!-- Chatbot Button -->
+		<button class="chatbot-btn ripple">
+			<i class="fas fa-robot"></i>
+		</button>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+		<script>
+			document.querySelector('.chatbot-btn').addEventListener('click', function () {
+				// Create chatbot modal
+				const chatbotModal = document.createElement('div');
+				chatbotModal.innerHTML = `
+		            <div class="modal fade" id="chatbotModal" tabindex="-1" aria-hidden="true" style="display: none;">
+		                <div class="modal-dialog modal-dialog-centered">
+		                    <div class="modal-content border-0" style="border-radius: 20px; overflow: hidden;">
+		                        <div class="modal-header bg-primary text-white">
+		                            <h5 class="modal-title">AI Learning Assistant</h5>
+		                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+		                        </div>
+		                        <div class="modal-body p-0">
+		                            <div class="chat-container" style="height: 400px; overflow-y: auto; padding: 20px;">
+		                                <div class="chat-message bot-message mb-3">
+		                                    <div class="d-flex align-items-start">
+		                                        <div class="flex-shrink-0">
+		                                            <img src="https://ui-avatars.com/api/?name=AI+Assistant&background=6c5ce7&color=fff" 
+		                                                 class="rounded-circle" width="40" height="40" alt="AI Assistant">
+		                                        </div>
+		                                        <div class="flex-grow-1 ms-3">
+		                                            <div class="bg-light p-3 rounded-3">
+		                                                <p class="mb-0">Hi , how are you? 😊</p>
+		                                            </div>
+		                                            <small class="text-muted">Just now</small>
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                            <div class="input-group p-3 border-top">
+		                                <input type="text" class="form-control rounded-pill" placeholder="Ask me anything..." id="chatInput">
+		                                <button class="btn btn-primary rounded-pill ms-2" type="button" id="sendMessage">
+		                                    <i class="fas fa-paper-plane"></i>
+		                                </button>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+		        `;
+				document.body.appendChild(chatbotModal);
+
+				// Show modal
+				const modal = new bootstrap.Modal(document.getElementById('chatbotModal'));
+				modal.show();
+
+				// Add message sending functionality
+				document.getElementById('sendMessage').addEventListener('click', sendMessage);
+				document.getElementById('chatInput').addEventListener('keypress', function (e) {
+					if (e.key === 'Enter') {
+						sendMessage();
+					}
+				});
+
+				function sendMessage() {
+					const input = document.getElementById('chatInput');
+					const message = input.value.trim();
+					if (message) {
+						// Add user message
+						const chatContainer = document.querySelector('.chat-container');
+						const userMessage = document.createElement('div');
+						userMessage.className = 'chat-message user-message mb-3';
+						userMessage.innerHTML = `
+		                    <div class="d-flex align-items-start justify-content-end">
+		                        <div class="flex-grow-1 me-3 text-end">
+		                            <div class="bg-primary text-white p-3 rounded-3">
+		                                <p class="mb-0">${message}</p>
+		                            </div>
+		                            <small class="text-muted">Just now</small>
+		                        </div>
+		                        <div class="flex-shrink-0">
+		                            <img src="https://ui-avatars.com/api/?name=User&background=2d3436&color=fff" 
+		                                 class="rounded-circle" width="40" height="40" alt="User">
+		                        </div>
+		                    </div>
+		                `;
+						chatContainer.appendChild(userMessage);
+
+						// Clear input
+						input.value = '';
+
+						// Scroll to bottom
+						chatContainer.scrollTop = chatContainer.scrollHeight;
+
+						// Add bot reply after a short delay
+						setTimeout(() => {
+							const botReply = document.createElement('div');
+							botReply.className = 'chat-message bot-message mb-3';
+							botReply.innerHTML = `
+		                        <div class="d-flex align-items-start">
+		                            <div class="flex-shrink-0">
+		                                <img src="https://ui-avatars.com/api/?name=AI+Assistant&background=6c5ce7&color=fff" 
+		                                     class="rounded-circle" width="40" height="40" alt="AI Assistant">
+		                            </div>
+		                            <div class="flex-grow-1 ms-3">
+		                                <div class="bg-light p-3 rounded-3">
+		                                    <p class="mb-0">${getBotResponse(message)}</p>
+		                                </div>
+		                                <small class="text-muted">Just now</small>
+		                            </div>
+		                        </div>
+		                    `;
+							chatContainer.appendChild(botReply);
+							chatContainer.scrollTop = chatContainer.scrollHeight;
+						}, 1000);
+					}
+				}
+
+				function getBotResponse(message) {
+					const lowerMsg = message.toLowerCase(); // Convert the message to lowercase for easy comparison
+
+					// Define prompt responses based on keywords
+					const prompts = [
+						{
+							keywords: ["hi", "hello", "hey", "vanakkam", "namaste"],
+							response: "👋 Hey there! I'm your AI learning buddy. What would you like to explore today?",
+							followUp: ["Programming concepts", "Course certificates", "AI/ML topics", "Debugging help"]
+						},
+						{
+							keywords: ["how are you", "how you doing", "status"],
+							response: "I'm a bot, but I'm always running at 100% efficiency! 😊 How about you? Need help with something specific today?",
+							options: ["Yes, I need help", "Just browsing"]
+						},
+						
+						{
+							keywords: ["prompt", "engineering", "chatgpt", "llm"],
+							response: "🚀 <strong>Prompt Engineering Tips:</strong>",
+							detailedResponse: `
+					            <div class="bot-response-content">
+					                <ol>
+					                    <li>Be specific about context and desired output format</li>
+					                    <li>Use examples (few-shot prompting)</li>
+					                    <li>Specify length and tone</li>
+					                    <li>Break complex tasks into steps</li>
+					                </ol>
+					                <p>Try: "Explain quantum computing like I'm 10 years old, in 3 sentences max"</p>
+					                <button class="btn btn-sm btn-outline-primary mt-2 try-prompt">Try This Prompt</button>
+					            </div>
+					        `
+						},
+						{
+							keywords: ["debug", "error", "bug", "fix", "exception"],
+							response: "🛠️ <strong>Debugging Assistant:</strong>",
+							detailedResponse: `
+					            <div class="bot-response-content">
+					                <p>Follow these steps:</p>
+					                <ol>
+					                    <li>Share the error message</li>
+					                    <li>What were you trying to do?</li>
+					                    <li>Code snippet (if possible)</li>
+					                </ol>
+					                <p>Common issues:</p>
+					                <ul>
+					                    <li>NullPointerException - Check object initialization</li>
+					                    <li>ArrayIndexOutOfBounds - Verify array lengths</li>
+					                    <li>Syntax errors - Check IDE warnings</li>
+					                </ul>
+					            </div>
+					        `,
+							commonErrors: {
+								"NullPointerException": "Check if objects are properly initialized before use",
+								"ArrayIndexOutOfBounds": "Verify your array length and loop conditions",
+								"SyntaxError": "Look for missing semicolons, brackets or typos"
+							}
+						},
+						{
+							keywords: ["certificate", "cert", "completion"],
+							response: "🏅 <strong>Certificate Information:</strong>",
+							detailedResponse: `
+					            <div class="bot-response-content">
+					                <p>Your certificates are available when you:</p>
+					                <ol>
+					                    <li>Complete all course modules</li>
+					                    <li>Score at least 70% on final assessment</li>
+					                    <li>Have no pending assignments</li>
+					                </ol>
+					                <p>You can download them from your dashboard or view them anytime.</p>
+					                <button class="btn btn-sm btn-primary mt-2 view-certificates">View My Certificates</button>
+					            </div>
+					        `
+						},
+						{
+							keywords: ["ai", "machine learning", "ml", "deep learning"],
+							response: "🧠 <strong>AI Learning Path:</strong>",
+							detailedResponse: `
+					            <div class="bot-response-content">
+					                <h5>Recommended Roadmap:</h5>
+					                <ol>
+					                    <li>Python Basics</li>
+					                    <li>NumPy & Pandas</li>
+					                    <li>Matplotlib/Seaborn</li>
+					                    <li>scikit-learn</li>
+					                    <li>TensorFlow/PyTorch</li>
+					                </ol>
+					                <p>Current trending topics:</p>
+					                <ul>
+					                    <li>Transformers (BERT, GPT)</li>
+					                    <li>Computer Vision (YOLO, ResNet)</li>
+					                    <li>Generative AI (Diffusion Models)</li>
+					                </ul>
+					            </div>
+					        `,
+							resources: {
+								"Beginner": "https://www.coursera.org/learn/machine-learning",
+								"Intermediate": "https://www.fast.ai/",
+								"Advanced": "https://paperswithcode.com/"
+							}
+						},
+						{
+							keywords: ["quiz", "question", "test me", "challenge"],
+							response: "🧠 <strong>Quiz Time!</strong> Choose a topic:",
+							topics: {
+								"Java": [
+									{
+										question: "What is the default value of a boolean in Java?",
+										options: ["true", "false", "null", "0"],
+										answer: 1
+									},
+									{
+										question: "Which keyword makes a variable constant?",
+										options: ["static", "final", "const", "fixed"],
+										answer: 1
+									}
+								],
+								"Python": [
+									{
+										question: "What does list comprehension do?",
+										options: ["Creates dictionaries", "Generates lists concisely", "Imports modules", "Handles exceptions"],
+										answer: 1
+									}
+								]
+							}
+						},
+						{
+							keywords: ["thank", "thanks", "appreciate"],
+							response: "You're welcome! I'm always happy to help. Remember, every expert was once a beginner. Keep going! 🚀",
+							encouragement: [
+								"You're making great progress!",
+								"Learning is a journey - you're doing awesome!",
+								"Your curiosity will take you far!"
+							]
+						},
+						{
+							keywords: ["bye", "exit", "goodbye", "see you"],
+							response: "Goodbye! 👋 Remember to:",
+							partingTips: [
+								"Take breaks every 45-60 minutes",
+								"Practice what you learn",
+								"Join study groups for motivation",
+								"Come back with more questions!"
+							]
+						},
+						{
+							keywords: ["help", "support", "stuck"],
+							response: "🤖 <strong>Help Center:</strong> Here's what I can assist with:",
+							helpTopics: [
+								{name: "Course Content", icon: "📚"},
+								{name: "Code Debugging", icon: "🐛"},
+								{name: "Learning Paths", icon: "🗺️"},
+								{name: "Certificate Help", icon: "🏅"}
+							]
+						},
+						{
+							keywords: ["woke up", "early morning", "just woke up", "starting my day", "good morning", "rise and shine"],
+							response: "🌞 Good morning! I just woke up and ready to start the day! What’s on your agenda for today?",
+							followUp: ["Morning routine", "Plans for the day", "Breakfast ideas", "Getting ready for work"],
+							detailedResponse: `
+						<div class="bot-response-content">
+						<h5>Morning Inspiration:</h5>
+						<ul>
+						<li><strong>Morning Routine</strong>: Start with a cup of water or tea to hydrate your body.</li>
+						<li><strong>Plans for the Day</strong>: What's the first thing on your to-do list?</li>
+						<li><strong>Breakfast Ideas</strong>: How about something healthy like oatmeal or avocado toast?</li>
+						</ul>
+						<p>Want some tips on how to kickstart your morning or plan your day?</p>
+						</div>
+						  `
+						},
+						{
+							keywords: ["lunch time", "break time", "having lunch", "what’s for lunch", "midday meal"],
+							response: "🍽️ It's lunch time! What are you having for lunch today? Need some lunch ideas?",
+							followUp: ["Healthy lunch", "Quick lunch recipes", "Lunch break ideas", "Office lunch tips"],
+							detailedResponse: `
+						<div class="bot-response-content">
+						<h5>Lunch Ideas:</h5>
+						<ul>
+						<li><strong>Quick Lunch</strong>: Try a sandwich or salad for a light and healthy meal.</li>
+						<li><strong>Healthy Lunch</strong>: How about a quinoa bowl with veggies and chicken?</li>
+						<li><strong>Office Lunch Tips</strong>: Pre-pack your lunch the night before to save time!</li>
+						</ul>
+						<p>Want a recipe suggestion or need more lunch ideas?</p>
+						</div>
+						  `
+						},
+						{
+							keywords: ["afternoon", "midday", "how's your afternoon", "afternoon routine", "working afternoon"],
+							response: "☀️ How’s your afternoon going? Need help getting through your work or studying?",
+							followUp: ["Afternoon break", "Productivity tips", "Work hacks", "Study advice"],
+							detailedResponse: `
+						<div class="bot-response-content">
+						<h5>Afternoon Boost:</h5>
+						<ul>
+						<li><strong>Take a Break</strong>: A short 10-minute walk can refresh your mind.</li>
+						<li><strong>Stay Productive</strong>: Set a 25-minute timer to work on your task with full focus.</li>
+						<li><strong>Study Tips</strong>: Organize your notes and focus on one topic at a time.</li>
+						</ul>
+						<p>Need help with your current project or task? Let's boost your productivity!</p>
+						</div>
+						  `
+						},
+						{
+							keywords: ["evening", "how’s your evening", "good evening", "dinner plans", "relaxing evening"],
+							response: "🌇 Good evening! How’s your day winding down? Do you have any dinner plans?",
+							followUp: ["Dinner recipes", "Evening relaxation", "Night routine", "Evening workout"],
+							detailedResponse: `
+						<div class="bot-response-content">
+						<h5>Evening Routine Ideas:</h5>
+						<ul>
+						<li><strong>Relaxing Evening</strong>: Try reading a book or listening to calming music.</li>
+						<li><strong>Dinner Recipes</strong>: A simple stir-fry or pasta is perfect for a quick meal.</li>
+						<li><strong>Night Routine</strong>: Prepare for bed with a warm cup of herbal tea and some stretching.</li>
+						</ul>
+						<p>Need any evening inspiration or dinner suggestions?</p>
+						</div>
+						  `
+						},
+						{
+							keywords: ["good night", "sleep well", "bedtime", "ready for bed", "night night"],
+							response: "🌙 Good night! Time to rest and recharge. Sleep tight and dream big! Need any bedtime tips?",
+							followUp: ["Bedtime routine", "How to sleep better", "Relaxing before bed", "Good night tips"],
+							detailedResponse: `
+						<div class="bot-response-content">
+						<h5>Good Night Tips:</h5>
+						<ul>
+						<li><strong>Bedtime Routine</strong>: Unwind with some light reading or meditation before bed.</li>
+						<li><strong>Better Sleep</strong>: Avoid screens and caffeine an hour before sleeping.</li>
+						<li><strong>Relaxing Before Bed</strong>: Try deep breathing exercises to calm your mind.</li>
+						</ul>
+						<p>Want tips on how to fall asleep faster or improve your sleep quality?</p>
+						</div>
+						  `
+						},
+						{
+						  keywords: ["saptiya", "saptiya?", "சாப்டியா", "ennapandra", "ennapannra", "என்ன பண்ற", "what are you doing", "had food", "dinner ah", "lunch ah", "உணவு", "சாப்பாடு"],
+						  response: "😄 Saptiya? Ennapa pannreenga? Casual chat time! Ready for some friendly talk?",
+						  followUp: [
+						    "Yes, I ate / சாப்பிட்டேன்!",
+						    "Not yet / இன்னும் இல்ல",
+						    "What are you doing? / என்ன பண்ற?",
+						    "Let's talk! / பேசலாமா?"
+						  ],
+						  detailedResponse: `
+						  <div class="bot-response-content">
+						    <h5>💬 Casual Tamil Chat Starters / சாதாரண உரையாடல்கள்:</h5>
+						    <ul>
+						      <li><strong>Saptiya? / சாப்டியா?</strong> – Did you eat?</li>
+						      <li><strong>Saptiya illa / சாப்பிடல</strong> – I haven't eaten yet</li>
+						      <li><strong>Saptiyachu / சாப்பிட்டேன்</strong> – I ate</li>
+						      <li><strong>Enna panra? / என்ன பண்ற?</strong> – What are you doing?</li>
+						      <li><strong>Onnum illa / ஒன்றும் இல்ல</strong> – Nothing much</li>
+						      <li><strong>Chilling / ஓய்வா இருக்கேன்</strong> – Just relaxing</li>
+						    </ul>
+						    <p>🌟 Wanna continue the chat? Ask me anything – Tamil or English!</p>
+						  </div>
+						  `
+						}
+						,						{
+						  keywords: ["java variable", "data types", "int", "float", "java datatypes", "declare variable"],
+						  response: "🧮 Java variables hold values. Here's how to declare them:",
+						  detailedResponse: `
+						  <pre>
+						int age = 25;
+						double price = 99.99;
+						char grade = 'A';
+						boolean isActive = true;
+						String name = "Java";
+						  </pre>
+						  `
+						},					  {
+					    keywords: ["java method", "function in java", "method syntax"],
+					    response: "🛠️ Methods are reusable blocks of code. Example below:",
+					    detailedResponse: `
+					    <pre>
+					  public static void greet() {
+					    System.out.println("Hello, Java!");
+					  }
+					    </pre>
+					    `
+					  },					{
+					  keywords: ["java class", "create class", "object in java", "object syntax"],
+					  response: "🏗️ Class is a blueprint. Object is an instance of it.",
+					  detailedResponse: `
+					  <pre>
+					class Car {
+					  String model = "Tesla";
+					}
+
+					public class Main {
+					  public static void main(String[] args) {
+					    Car myCar = new Car();
+					    System.out.println(myCar.model);
+					  }
+					}
+					  </pre>
+					  `
+					},				  {
+				    keywords: ["inheritance", "extends", "parent child class"],
+				    response: "🧬 Inheritance lets one class inherit from another using `extends`.",
+				    detailedResponse: `
+				    <pre>
+				  class Animal {
+				    void sound() {
+				      System.out.println("Animal makes sound");
+				    }
+				  }
+
+				  class Dog extends Animal {
+				    void bark() {
+				      System.out.println("Dog barks");
+				    }
+				  }
+				    </pre>
+				    `
+				  },				{
+				  keywords: ["polymorphism", "method overriding", "method overloading"],
+				  response: "🔄 Polymorphism allows multiple forms: Overloading & Overriding.",
+				  detailedResponse: `
+				  <pre>
+				// Overloading
+				void add(int a, int b) { }
+				void add(double a, double b) { }
+
+				// Overriding
+				class A {
+				  void show() { System.out.println("A"); }
+				}
+				class B extends A {
+				  void show() { System.out.println("B"); }
+				}
+				  </pre>
+				  `
+				},			  {
+			    keywords: ["interface", "implement interface", "interface in java"],
+			    response: "🔌 Interface provides full abstraction. Implement using `implements`.",
+			    detailedResponse: `
+			    <pre>
+			  interface Animal {
+			    void makeSound();
+			  }
+
+			  class Cat implements Animal {
+			    public void makeSound() {
+			      System.out.println("Meow");
+			    }
+			  }
+			    </pre>
+			    `
+			  },			{
+			  keywords: ["for loop", "while loop", "do while", "loop syntax", "iteration"],
+			  response: "🔁 Java supports `for`, `while`, and `do-while` loops.",
+			  detailedResponse: `
+			  <pre>
+			// for loop
+			for (int i = 0; i < 5; i++) {
+			  System.out.println(i);
+			}
+
+			// while loop
+			int j = 0;
+			while (j < 5) {
+			  System.out.println(j);
+			  j++;
+			}
+			  </pre>
+			  `
+			},		  {
+		    keywords: ["array", "array syntax", "java array", "declare array"],
+		    response: "📚 Arrays hold multiple values. Here's how:",
+		    detailedResponse: `
+		    <pre>
+		  int[] numbers = {1, 2, 3, 4, 5};
+		  System.out.println(numbers[0]); // prints 1
+		    </pre>
+		    `
+		  },		{
+		  keywords: ["scanner", "user input", "java input", "read input"],
+		  response: "📥 Use `Scanner` to get input from user:",
+		  detailedResponse: `
+		  <pre>
+		import java.util.Scanner;
+
+		public class Main {
+		  public static void main(String[] args) {
+		    Scanner sc = new Scanner(System.in);
+		    System.out.print("Enter your name: ");
+		    String name = sc.nextLine();
+		    System.out.println("Hello " + name);
+		  }
+		}
+		  </pre>
+		  `
+		},	  {
+	    keywords: ["file handling", "read file", "write file", "file in java"],
+	    response: "📄 Java can read/write files using File & BufferedReader.",
+	    detailedResponse: `
+	    <pre>
+	  import java.io.*;
+
+	  public class ReadFile {
+	    public static void main(String[] args) throws Exception {
+	      BufferedReader br = new BufferedReader(new FileReader("data.txt"));
+	      String line;
+	      while ((line = br.readLine()) != null) {
+	        System.out.println(line);
+	      }
+	      br.close();
+	    }
+	  }
+	    </pre>
+	    `
+	  }
+					];
+
+					// Enhanced matching function
+					function findResponse(message) {
+						const lowerMsg = message.toLowerCase().trim();
+
+						// Check for exact matches first
+						for (const prompt of prompts) {
+							for (const keyword of prompt.keywords) {
+								if (lowerMsg === keyword.toLowerCase()) {
+									return {
+										...prompt,
+										matchType: 'exact',
+										matchedKeyword: keyword
+									};
+								}
+							}
+						}
+
+						// Check for partial matches
+						for (const prompt of prompts) {
+							for (const keyword of prompt.keywords) {
+								const regex = new RegExp(`\\b${keyword}\\b`, 'i');
+								if (regex.test(lowerMsg)) {
+									return {
+										...prompt,
+										matchType: 'partial',
+										matchedKeyword: keyword
+									};
+								}
+							}
+						}
+
+						// Default fallback response
+						return {
+							keywords: [],
+							response: "I'm not sure I understand. Could you rephrase or ask about:",
+							suggestions: [
+								"Java programming concepts",
+								"How to get my certificate",
+								"AI learning resources",
+								"Debugging help"
+							]
+						};
+					}
+
+					// Example usage in your chat function
+					async function sendMessage() {
+						const input = document.getElementById('chatInput');
+						const message = input.value.trim();
+
+						if (message) {
+							// ... (existing code to display user message)
+
+							// Get bot response
+							const responseData = findResponse(message);
+
+							// Display response
+							let botResponse = responseData.response;
+
+							if (responseData.detailedResponse) {
+								botResponse += responseData.detailedResponse;
+							}
+
+							if (responseData.followUp) {
+								botResponse += `<div class="follow-up mt-2"><p>Follow-up:</p><div class="btn-group">` +
+									responseData.followUp.map(item =>
+										`<button class="btn btn-sm btn-outline-secondary follow-up-btn">${item}</button>`
+									).join('') + `</div></div>`;
+							}
+
+							// Create and display bot message
+							const botReply = document.createElement('div');
+							botReply.className = 'chat-message bot-message mb-3';
+							botReply.innerHTML = `
+					            <div class="d-flex align-items-start">
+					                <div class="flex-shrink-0">
+					                    <img src="https://ui-avatars.com/api/?name=AI+Assistant&background=6c5ce7&color=fff" 
+					                         class="rounded-circle" width="40" height="40" alt="AI Assistant">
+					                </div>
+					                <div class="flex-grow-1 ms-3">
+					                    <div class="bg-light p-3 rounded-3">
+					                        ${botResponse}
+					                    </div>
+					                    <small class="text-muted">Just now</small>
+					                </div>
+					            </div>
+					        `;
+
+							document.querySelector('.chat-container').appendChild(botReply);
+
+							// Add event listeners for any interactive elements
+							botReply.querySelectorAll('.follow-up-btn').forEach(btn => {
+								btn.addEventListener('click', () => {
+									document.getElementById('chatInput').value = btn.textContent;
+									sendMessage();
+								});
+							});
+
+							// Scroll to bottom
+							document.querySelector('.chat-container').scrollTop = document.querySelector('.chat-container').scrollHeight;
+						}
+					}
+
+					// Iterate through each prompt and check if any keyword is included in the user input
+					for (let prompt of prompts) {
+						if (prompt.keywords.some(keyword => lowerMsg.includes(keyword))) {
+							return prompt.response; // Return the response if a match is found
+						}
+					}
+
+					// Default response if no match is found
+					return "🤖 I'm still learning! Try asking about courses, programming, or certificates.";
+				}
+
+				// Remove modal when closed
+				document.getElementById('chatbotModal').addEventListener('hidden.bs.modal', function () {
+					chatbotModal.remove();
+				});
+			});
+		</script>
+	</div>
+
+	<!-- Main Content -->
+	<div class="main-content">
+		<!-- Top Navbar -->
+		<nav class="navbar navbar-expand navbar-light bg-white rounded-3 mb-4 animate__animated animate__fadeIn">
+			<div class="container-fluid">
+				<h5 class="mb-0 d-lg-none">Dashboard</h5>
+				<div class="navbar-nav ms-auto align-items-center">
+					<div class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle d-flex align-items-center ripple" href="#"
+							id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+							<img src="https://randomuser.me/api/portraits/men/32.jpg" class="user-avatar me-2">
+							<span th:text="${name}">John Doe</span>
+
+						</a>
+						<ul class="dropdown-menu dropdown-menu-end">
+							<li><a class="dropdown-item ripple" href="/profile"><i class="fas fa-user me-2"></i>
+									Profile</a>
+							</li>
+							<li><a class="dropdown-item ripple" href="#"><i class="fas fa-cog me-2"></i> Settings</a>
+							</li>
+							<li>
+								<hr class="dropdown-divider">
+							</li>
+							<li><a class="dropdown-item text-danger ripple" href="/userlogin"><i
+										class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		<!-- Dashboard Content -->
+		<div class="container-fluid">
+			<h3 class="mb-4 animate__animated animate__fadeInDown">Welcome back,<span th:text="${name}"></span><span
+					class="wave">👋</span></h3>
+
+			<!-- Stats Cards -->
+			<div class="row mb-4">
+				<div class="col-md-3 animate__animated animate__fadeInLeft">
+					<div class="stats-card card bg-primary">
+						<div class="card-body">
+							<div class="d-flex justify-content-between align-items-center">
+								<div>
+									<h6 class="text-uppercase">Active Courses</h6>
+									<h2 class="mb-0" th:text="${courseCount}">3</h2>
+								</div>
+								<i class="fas fa-book"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 animate__animated animate__fadeInLeft animate__delay-1s">
+					<div class="stats-card card bg-success">
+						<div class="card-body">
+							<div class="d-flex justify-content-between align-items-center">
+								<div>
+									<h6 class="text-uppercase">Completed</h6>
+									<h2 class="mb-0" th:text="${completedCount}">5</h2>
+								</div>
+								<i class="fas fa-check-circle"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 animate__animated animate__fadeInLeft animate__delay-2s">
+					<div class="stats-card card bg-warning">
+						<div class="card-body">
+							<div class="d-flex justify-content-between align-items-center">
+								<div>
+									<h6 class="text-uppercase">Certificates</h6>
+									<h2 class="mb-0" th:text="${acceptedCount}">2</h2>
+								</div>
+								<i class="fas fa-certificate"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 animate__animated animate__fadeInLeft animate__delay-3s">
+					<div class="stats-card card bg-info">
+						<div class="card-body">
+							<div class="d-flex justify-content-between align-items-center">
+								<div>
+									<h6 class="text-uppercase">Pending</h6>
+									<h2 class="mb-0" th:text="${pendingCount}">8</h2>
+								</div>
+								<!-- Use a more suitable icon for "Pending" -->
+								<i class="fas fa-hourglass-half" style="font-size: 2rem; color: white;"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+
+			<!-- Current Courses -->
+			<div class="row mb-4">
+				<div class="col-12">
+					<div class="card animate__animated animate__fadeInUp">
+						<div class="card-header">
+							<h5 class="mb-0">Trending Courses</h5>
+							<small class="text-muted">Continue your learning journey</small>
+						</div>
+						<div class="card-body">
+							<div class="row">
+								<div class="col-md-4 mb-4">
+									<div class="course-card card h-100">
+										<img src="https://plus.unsplash.com/premium_photo-1683120966127-14162cdd0935?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGVjaG5vbG9neXxlbnwwfHwwfHx8MA%3D%3D"
+											class="card-img-top course-img" alt="Course">
+										<div class="card-body">
+											<span class="course-badge">Beginner</span>
+											<h5 class="card-title">Introduction to AI</h5>
+											<p class="card-text text-muted">Learn the fundamentals of artificial
+												intelligence</p>
+											<div class="mb-3">
+												<small class="text-muted">Progress: 100%</small>
+												<div class="progress mt-2">
+													<div class="progress-bar" style="width: 105%"></div>
+												</div>
+											</div>
+											<a href="#" class="btn btn-sm btn-primary ripple">Continue</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4 mb-4">
+									<div class="course-card card h-100">
+										<img src="https://plus.unsplash.com/premium_photo-1676637656166-cb7b3a43b81a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YWl8ZW58MHx8MHx8fDA%3D"
+											class="card-img-top course-img" alt="Course">
+										<div class="card-body">
+											<span class="course-badge">Intermediate</span>
+											<h5 class="card-title">Machine Learning Basics</h5>
+											<p class="card-text text-muted">Hands-on introduction to machine learning
+												algorithms</p>
+											<div class="mb-3">
+												<small class="text-muted">Progress: 100%</small>
+												<div class="progress mt-2">
+													<div class="progress-bar" style="width: 102%"></div>
+												</div>
+											</div>
+											<a href="#" class="btn btn-sm btn-primary ripple">Continue</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4 mb-4">
+									<div class="course-card card h-100">
+										<img src="https://plus.unsplash.com/premium_photo-1683120963435-6f9355d4a776?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzZ8fGFpfGVufDB8fDB8fHww"
+											class="card-img-top course-img" alt="Course">
+										<div class="card-body">
+											<span class="course-badge">Advanced</span>
+											<h5 class="card-title">Deep Learning Mastery</h5>
+											<p class="card-text text-muted">Advanced techniques in neural networks and
+												deep learning</p>
+											<div class="mb-3">
+												<small class="text-muted">Progress: 100%</small>
+												<div class="progress mt-2">
+													<div class="progress-bar" style="width: 128%"></div>
+												</div>
+											</div>
+											<a href="#" class="btn btn-sm btn-primary ripple">Continue</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Recent Activities -->
+			<div class="row">
+				<div class="col-md-8">
+					<div class="card animate__animated animate__fadeInUp animate__delay-1s">
+						<div class="card-header">
+							<h5 class="mb-0">Recent Activities</h5>
+							<small class="text-muted">Your learning progress</small>
+						</div>
+						<div class="card-body">
+							<div class="list-group">
+								<a href="#" class="list-group-item list-group-item-action ripple">
+									<div class="d-flex w-100 justify-content-between">
+										<h6 class="mb-1">Completed Quiz: AI Fundamentals</h6>
+										<small class="text-muted">2 hours ago</small>
+									</div>
+									<p class="mb-1">Scored 85% on your first attempt</p>
+									<small class="text-success"><i class="fas fa-check-circle me-1"></i>
+										Completed</small>
+								</a>
+								<a href="#" class="list-group-item list-group-item-action ripple">
+									<div class="d-flex w-100 justify-content-between">
+										<h6 class="mb-1">New Course Added</h6>
+										<small class="text-muted">1 day ago</small>
+									</div>
+									<p class="mb-1">"Natural Language Processing" is now available</p>
+									<small class="text-primary"><i class="fas fa-bolt me-1"></i> New</small>
+								</a>
+								<a href="#" class="list-group-item list-group-item-action ripple">
+									<div class="d-flex w-100 justify-content-between">
+										<h6 class="mb-1">Certificate Earned</h6>
+										<small class="text-muted">3 days ago</small>
+									</div>
+									<p class="mb-1">You earned a certificate for "Python for AI"</p>
+									<small class="text-warning"><i class="fas fa-award me-1"></i> Achievement</small>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="card animate__animated animate__fadeInUp animate__delay-2s">
+						<div class="card-header" style="height: 170px;">
+							<h5 class="mb-0">Recommended For You</h5>
+							<small class="text-muted">Based on your interests</small>
+						</div>
+						<div class="card-body">
+							<div class="mb-3">
+								<div class="d-flex justify-content-between">
+									<h6>Computer Vision Basics</h6>
+									<small class="text-muted">15%</small>
+								</div>
+								<div class="progress mt-2">
+									<div class="progress-bar" style="width: 15%"></div>
+								</div>
+							</div>
+							<div class="mb-3">
+								<div class="d-flex justify-content-between">
+									<h6>AI Ethics</h6>
+									<small class="text-muted">5%</small>
+								</div>
+								<div class="progress mt-2">
+									<div class="progress-bar" style="width: 5%"></div>
+								</div>
+							</div>
+							<div class="mb-3">
+								<div class="d-flex justify-content-between">
+									<h6>Reinforcement Learning</h6>
+									<small class="text-muted">Not started</small>
+								</div>
+								<div class="progress mt-2">
+									<div class="progress-bar" style="width: 0%"></div>
+								</div>
+							</div>
+							<div class="text-center mt-3">
+								<button class="btn btn-sm btn-primary ripple">View All Recommendations</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!-- Bootstrap JS -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+	<script>
+
+
+		// Mobile sidebar toggle
+		function toggleSidebar() {
+			document.querySelector('.sidebar').classList.toggle('active');
+		}
+
+		// Initialize tooltips
+		var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+		var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+			return new bootstrap.Tooltip(tooltipTriggerEl);
+		});
+
+		// Ripple effect for all ripple elements
+		document.querySelectorAll('.ripple').forEach(element => {
+			element.addEventListener('click', function (e) {
+				// Remove any existing ripple
+				const existingRipple = this.querySelector('.ripple-effect');
+				if (existingRipple) {
+					existingRipple.remove();
+				}
+
+				// Create ripple
+				const ripple = document.createElement('span');
+				ripple.classList.add('ripple-effect');
+
+				// Style ripple
+				this.style.position = 'relative';
+				this.style.overflow = 'hidden';
+				ripple.style.position = 'absolute';
+				ripple.style.borderRadius = '50%';
+				ripple.style.transform = 'scale(0)';
+				ripple.style.animation = 'ripple 600ms linear';
+				ripple.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
+				ripple.style.pointerEvents = 'none';
+
+				// Position ripple
+				const rect = this.getBoundingClientRect();
+				const size = Math.max(rect.width, rect.height);
+				ripple.style.width = ripple.style.height = `${size}px`;
+				ripple.style.left = `${e.clientX - rect.left - size / 2}px`;
+				ripple.style.top = `${e.clientY - rect.top - size / 2}px`;
+
+				this.appendChild(ripple);
+
+				// Remove ripple after animation
+				setTimeout(() => {
+					ripple.remove();
+				}, 600);
+			});
+		});
+
+		// Add ripple animation to styles
+		const style = document.createElement('style');
+		style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+		document.head.appendChild(style);
+
+		// Animate elements when they come into view
+		const animateOnScroll = () => {
+			const elements = document.querySelectorAll('.animate__animated');
+			elements.forEach(element => {
+				const elementPosition = element.getBoundingClientRect().top;
+				const screenPosition = window.innerHeight / 1.2;
+
+				if (elementPosition < screenPosition) {
+					const animation = element.getAttribute('data-animation');
+					element.classList.add(animation);
+				}
+			});
+		};
+
+		window.addEventListener('scroll', animateOnScroll);
+		document.addEventListener('DOMContentLoaded', animateOnScroll);
+	</script>
+	<!-- In your HTML head -->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+	<!-- Notification handler -->
+	<script th:if="${message}" th:inline="javascript">
+		/*<![CDATA[*/
+		document.addEventListener('DOMContentLoaded', function () {
+			Swal.fire({
+				title: /*[[${alertType == 'error' ? 'Error!' : 'Success!'}]]*/ 'Notification',
+				text: /*[[${message}]]*/ '',
+				icon: /*[[${alertType}]]*/ 'info',
+				confirmButtonText: 'OK',
+				timer: 3000,
+				timerProgressBar: true,
+				toast: true,
+				position: 'top-end'
+			});
+		});
+		/*]]>*/
+	</script>
+</body>
+
+</html>

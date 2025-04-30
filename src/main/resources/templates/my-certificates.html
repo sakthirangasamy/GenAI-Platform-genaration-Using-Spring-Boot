@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Certificates</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        .certificate-container {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            border: 1px solid rgba(108, 92, 231, 0.2);
+        }
+        
+        .certificate {
+            position: relative;
+            z-index: 2;
+            background: white;
+        }
+        
+        .certificate::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://www.transparenttextures.com/patterns/brushed-alum.png');
+            opacity: 0.05;
+            z-index: -1;
+        }
+        
+        .certificate-border {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(45deg, #6c5ce7 0%, #a29bfe 50%, #6c5ce7 100%);
+            background-size: 400% 400%;
+            animation: gradientBorder 8s ease infinite;
+            z-index: 1;
+            border-radius: 10px;
+        }
+        
+        @keyframes gradientBorder {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .certificate-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .certificate-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(108, 92, 231, 0.2) !important;
+        }
+        
+        .certificate-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #6c5ce7, #a29bfe);
+        }
+        
+        .shine-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .shine-effect::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.13);
+            background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0.13) 0%,
+                rgba(255, 255, 255, 0.13) 77%,
+                rgba(255, 255, 255, 0.5) 92%,
+                rgba(255, 255, 255, 0.0) 100%
+            );
+            transform: rotate(30deg);
+            transition: all 0.7s ease;
+        }
+        
+        .certificate-card:hover::before {
+            animation: shine 1.5s ease;
+        }
+        
+        @keyframes shine {
+            0% { left: -60%; }
+            20% { left: 100%; }
+            100% { left: 100%; }
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(108, 92, 231, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(108, 92, 231, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(108, 92, 231, 0); }
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            opacity: 0;
+        }
+        
+        .btn-certificate {
+            background: linear-gradient(45deg, #6c5ce7, #a29bfe);
+            border: none;
+            color: white;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-certificate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
+            color: white;
+        }
+        
+        .btn-certificate::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #a29bfe, #6c5ce7);
+            z-index: -1;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+        
+        .btn-certificate:hover::after {
+            opacity: 1;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #6c5ce7, #a29bfe);
+            border-radius: 2px;
+            transform: scaleX(0);
+            transform-origin: left;
+            animation: titleUnderline 1.5s ease forwards;
+        }
+        
+        @keyframes titleUnderline {
+            0% { transform: scaleX(0); }
+            100% { transform: scaleX(1); }
+        }
+        
+        .ai-card {
+            transition: all 0.3s ease;
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .ai-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #00b894, #00cec9);
+        }
+        
+        .ai-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 184, 148, 0.2) !important;
+        }
+        
+        .ai-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .ai-card:hover .ai-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .no-certificates {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 12px;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .no-certificates::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(108, 92, 231, 0.05) 0%, rgba(108, 92, 231, 0) 70%);
+            animation: rotateBg 20s linear infinite;
+        }
+        
+        @keyframes rotateBg {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+		
+		
+		#certificateContainer {
+		           width: 100%;
+		           display: flex;
+		           justify-content: center;
+		           align-items: center;
+		       }
+		       
+		       .certificate-to-download {
+		           width: 800px;
+		           height: 600px;
+		           background: white;
+		           padding: 40px;
+		           border: 15px solid #6c5ce7;
+		           position: relative;
+		           box-sizing: border-box;
+		       }
+		       
+		       .certificate-to-download .watermark {
+		           position: absolute;
+		           top: 50%;
+		           left: 50%;
+		           transform: translate(-50%, -50%);
+		           font-size: 120px;
+		           font-weight: 800;
+		           color: rgba(108, 92, 231, 0.08);
+		           z-index: 0;
+		           user-select: none;
+		           font-family: 'Times New Roman', serif;
+		       }
+		       
+		       .certificate-to-download .header {
+		           text-align: center;
+		           margin-bottom: 30px;
+		           position: relative;
+		           z-index: 1;
+		       }
+		       
+		       .certificate-to-download .header img {
+		           height: 80px;
+		           margin-bottom: 20px;
+		       }
+		       
+		       .certificate-to-download .header h1 {
+		           font-weight: 700;
+		           color: #6c5ce7;
+		           margin-bottom: 10px;
+		       }
+		       
+		       .certificate-to-download .header p {
+		           font-size: 1.25rem;
+		       }
+		       
+		       .certificate-to-download .content {
+		           text-align: center;
+		           margin: 40px 0;
+		           position: relative;
+		           z-index: 1;
+		       }
+		       
+		       .certificate-to-download .content h2 {
+		           font-size: 2.5rem;
+		           font-weight: 700;
+		           margin-bottom: 20px;
+		           color: #2d3436;
+		       }
+		       
+		       .certificate-to-download .content p {
+		           font-size: 1.25rem;
+		           margin-bottom: 5px;
+		       }
+		       
+		       .certificate-to-download .content h3 {
+		           font-size: 1.75rem;
+		           font-weight: 600;
+		           color: #00b894;
+		           margin-top: 20px;
+		       }
+		       
+		       .certificate-to-download .divider {
+		           width: 100px;
+		           height: 2px;
+		           background: linear-gradient(90deg, #6c5ce7, #a29bfe);
+		           margin: 20px auto;
+		       }
+		       
+		       .certificate-to-download .details {
+		           margin-top: 40px;
+		       }
+		       
+		       .certificate-to-download .signatures {
+		           margin-top: 60px;
+		       }
+		       
+		       .certificate-to-download .footer {
+		           text-align: center;
+		           margin-top: 40px;
+		           font-size: 0.8rem;
+		           color: #666;
+		       }
+    </style>
+</head>
+<body>
+    <div class="container mt-5 animate__animated animate__fadeIn">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="mb-0 section-title" style="font-weight: 700; color: #2d3436;">
+                <i class="fas fa-certificate me-2" style="color: #6c5ce7;"></i>
+                My Achieved Certificates
+            </h2>
+            <a th:href="@{/userDashboard}" class="btn btn-outline-primary btn-certificate" 
+               style="border-radius: 8px; font-weight: 500; transition: all 0.3s ease;"
+               onmouseover="this.style.transform='translateX(-3px)'; this.style.boxShadow='0 5px 15px rgba(108, 92, 231, 0.2)'"
+               onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='none'">
+                <i class="fas fa-arrow-left mr-2"></i> Back to Dashboard
+            </a>
+        </div>
+
+        <div class="container mt-4">
+            <!-- Certificate View Section (Initially Hidden) -->
+            <div id="certificateView" style="display: none;">
+                <div class="d-flex justify-content-between align-items-center mb-4 animate__animated animate__fadeInDown">
+                    <h3 class="mb-0" style="font-weight: 600;">Your Certificate of Achievement</h3>
+                    <div>
+                        <button id="downloadCertificate" class="btn btn-primary me-2 btn-certificate pulse">
+                            <i class="fas fa-download me-1"></i> Download
+                        </button>
+                        <button id="closeCertificate" class="btn btn-outline-secondary">
+                            <i class="fas fa-times me-1"></i> Close
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="certificateContainer" class="certificate-container mb-5 animate__animated animate__zoomIn" 
+                     style="border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                    <div class="certificate-border"></div>
+                    <!-- Certificate content will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Courses List Section -->
+            <div id="coursesList">
+                <div class="row">
+                    <div th:each="course, iter : ${acceptedCourses}" class="col-md-6 col-lg-4 mb-4">
+                        <div class="card h-100 certificate-card shine-effect">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0" th:text="${course.courseName}"></h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between mb-3">
+                                    <div>
+                                        <small class="text-muted">Level</small>
+                                        <p class="mb-0 fw-bold" th:text="${course.courseLevel}"></p>
+                                    </div>
+                                    <div>
+                                        <small class="text-muted">Category</small>
+                                        <p class="mb-0 fw-bold" th:text="${course.courseCategory}"></p>
+                                    </div>
+                                </div>
+                                <button th:attr="data-id=${course.id}" 
+                                        class="btn btn-success w-100 view-certificate-btn btn-certificate">
+                                    <i class="fas fa-award me-1"></i> View Certificate
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Recommended Courses -->
+                <div class="mt-5 animate__animated animate__fadeInUp">
+                    <h4 class="mb-4" style="font-weight: 600;">
+                        <i class="fas fa-robot text-primary me-2"></i> AI-Powered Course Recommendations
+                    </h4>
+                    <div class="row">
+                        <!-- Sample recommended courses - in real app these would come from your backend -->
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100 ai-card">
+                                <div class="card-body text-center">
+                                    <div class="bg-primary bg-opacity-10 p-3 rounded-circle d-inline-block mb-3 ai-icon">
+                                        <i class="fas fa-brain text-primary fa-2x"></i>
+                                    </div>
+                                    <h5>Advanced Python Programming</h5>
+                                    <p class="text-muted">Take your Python skills to the next level</p>
+                                    <a href="#" class="btn btn-outline-primary">Explore</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100 ai-card">
+                                <div class="card-body text-center">
+                                    <div class="bg-primary bg-opacity-10 p-3 rounded-circle d-inline-block mb-3 ai-icon">
+                                        <i class="fas fa-chart-line text-primary fa-2x"></i>
+                                    </div>
+                                    <h5>Data Science Fundamentals</h5>
+                                    <p class="text-muted">Master data analysis and visualization</p>
+                                    <a href="#" class="btn btn-outline-primary">Explore</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100 ai-card">
+                                <div class="card-body text-center">
+                                    <div class="bg-primary bg-opacity-10 p-3 rounded-circle d-inline-block mb-3 ai-icon">
+                                        <i class="fas fa-network-wired text-primary fa-2x"></i>
+                                    </div>
+                                    <h5>Machine Learning Basics</h5>
+                                    <p class="text-muted">Introduction to AI and ML concepts</p>
+                                    <a href="#" class="btn btn-outline-primary">Explore</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Certificate Template (Hidden) -->
+        <div id="certificateTemplate" style="display: none;">
+            <div class="certificate p-4 p-md-5" style="border: 15px solid transparent; border-image: linear-gradient(45deg, #6c5ce7, #a29bfe) 1; min-height: 600px; position: relative; background: white;">
+                <div class="watermark floating" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 120px; font-weight: 800; color: rgba(108, 92, 231, 0.08); z-index: 0; user-select: none; font-family: 'Times New Roman', serif;">ACHIEVEMENT</div>
+                
+                <div class="text-center mb-4" style="position: relative; z-index: 1;">
+                    <img src="/images/logo.png" alt="Company Logo" style="height: 80px; margin-bottom: 20px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));">
+                    <h1 class="text-primary" style="font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.1); letter-spacing: 1px;">CERTIFICATE OF EXCELLENCE</h1>
+                    <p class="lead" style="font-size: 1.25rem;">This is to certify that</p>
+                </div>
+                
+                <div class="text-center my-5 py-3" style="position: relative; z-index: 1;">
+                    <h2 id="certStudentName" class="display-4 fw-bold mb-3" style="color: #2d3436; text-shadow: 0 2px 4px rgba(0,0,0,0.1); letter-spacing: 1px; font-weight: 700;"></h2>
+                    <p class="lead" style="font-size: 1.25rem;">has successfully completed with distinction the course</p>
+                    <h3 id="certCourseName" class="fw-bold mt-3" style="color: #00b894; font-size: 1.75rem;"></h3>
+                    <div style="width: 100px; height: 2px; background: linear-gradient(90deg, #6c5ce7, #a29bfe); margin: 20px auto;"></div>
+                </div>
+                
+                <div class="row mt-5" style="position: relative; z-index: 1;">
+                    <div class="col-md-6">
+                        <p><strong>Course Level:</strong> <span id="certCourseLevel" class="fw-bold"></span></p>
+                        <p><strong>Category:</strong> <span id="certCourseCategory" class="fw-bold"></span></p>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <p><strong>Date Completed:</strong> <span id="certDate" class="fw-bold"></span></p>
+                        <p><strong>Certificate ID:</strong> <span id="certId" class="fw-bold"></span></p>
+                    </div>
+                </div>
+                
+                <div class="row mt-5" style="position: relative; z-index: 1;">
+                    <div class="col-md-6">
+                        <div class="text-center mt-4">
+                            <img src="/images/signature1.png" alt="Instructor Signature" style="height: 60px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));">
+                            <div class="mt-2" style="border-top: 1px solid #333; width: 150px; margin: 0 auto;"></div>
+                            <p class="mb-0 fw-bold">Dr. Sarah Johnson</p>
+                            <p class="text-muted small">Course Instructor</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-center mt-4">
+                            <img src="/images/signature2.png" alt="Director Signature" style="height: 60px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));">
+                            <div class="mt-2" style="border-top: 1px solid #333; width: 150px; margin: 0 auto;"></div>
+                            <p class="mb-0 fw-bold">Michael Chen</p>
+                            <p class="text-muted small">Director, AI Learning Platform</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4" style="position: relative; z-index: 1;">
+                    <small class="text-muted">This certificate is issued by AI Powered Learning Platform and can be verified online at our website</small>
+                </div>
+            </div>
+        </div>
+
+        <div th:if="${acceptedCourses.empty}" class="text-center py-5 no-certificates animate__animated animate__fadeIn">
+            <i class="fas fa-certificate mb-4" style="font-size: 4rem; color: #b2bec3;"></i>
+            <h3 style="color: #636e72; font-weight: 600;">No certificates earned yet</h3>
+            <p class="text-muted mb-4" style="max-width: 500px; margin: 0 auto;">Complete courses to unlock your achievement certificates and showcase your skills</p>
+            <a th:href="@{/courses}" class="btn btn-primary mt-3 btn-certificate" style="border-radius: 8px;">
+                <i class="fas fa-book-open mr-2"></i> Browse Available Courses
+            </a>
+        </div>
+    </div>
+	<!-- Modified Certificate Template for Download -->
+	    <div id="certificateDownloadTemplate" style="display: none;">
+	        <div class="certificate-to-download">
+	            <div class="watermark">ACHIEVEMENT</div>
+	            
+	            <div class="header">
+	                <img src="/images/logo.png" alt="Company Logo">
+	                <h1>CERTIFICATE OF EXCELLENCE</h1>
+	                <p>This is to certify that</p>
+	            </div>
+	            
+	            <div class="content">
+	                <h2 id="downloadCertStudentName"></h2>
+	                <p>has successfully completed with distinction the course</p>
+	                <h3 id="downloadCertCourseName"></h3>
+	                <div class="divider"></div>
+	            </div>
+	            
+	            <div class="row details">
+	                <div class="col-md-6">
+	                    <p><strong>Course Level:</strong> <span id="downloadCertCourseLevel"></span></p>
+	                    <p><strong>Category:</strong> <span id="downloadCertCourseCategory"></span></p>
+	                </div>
+	                <div class="col-md-6 text-right">
+	                    <p><strong>Date Completed:</strong> <span id="downloadCertDate"></span></p>
+	                    <p><strong>Certificate ID:</strong> <span id="downloadCertId"></span></p>
+	                </div>
+	            </div>
+	            
+	            <div class="row signatures">
+	                <div class="col-md-6">
+	                    <div class="text-center">
+	                        <img src="/images/signature1.png" alt="Instructor Signature" style="height: 60px;">
+	                        <div style="border-top: 1px solid #333; width: 150px; margin: 10px auto 0;"></div>
+	                        <p class="mb-0 fw-bold">Dr. Sarah Johnson</p>
+	                        <p class="text-muted small">Course Instructor</p>
+	                    </div>
+	                </div>
+	                <div class="col-md-6">
+	                    <div class="text-center">
+	                        <img src="/images/signature2.png" alt="Director Signature" style="height: 60px;">
+	                        <div style="border-top: 1px solid #333; width: 150px; margin: 10px auto 0;"></div>
+	                        <p class="mb-0 fw-bold">Michael Chen</p>
+	                        <p class="text-muted small">Director, AI Learning Platform</p>
+	                    </div>
+	                </div>
+	            </div>
+	            
+	            <div class="footer">
+	                <small>This certificate is issued by AI Powered Learning Platform and can be verified online at our website</small>
+	            </div>
+	        </div>
+	    </div>
+		<script>
+		       function downloadCertificate() {
+		           // Create a clone of the download template
+		           const downloadTemplate = document.getElementById('certificateDownloadTemplate').cloneNode(true);
+		           downloadTemplate.style.display = 'block';
+		           
+		           // Populate the download template with data
+		           downloadTemplate.querySelector('#downloadCertStudentName').textContent = document.getElementById('certStudentName').textContent;
+		           downloadTemplate.querySelector('#downloadCertCourseName').textContent = document.getElementById('certCourseName').textContent;
+		           downloadTemplate.querySelector('#downloadCertCourseLevel').textContent = document.getElementById('certCourseLevel').textContent;
+		           downloadTemplate.querySelector('#downloadCertCourseCategory').textContent = document.getElementById('certCourseCategory').textContent;
+		           downloadTemplate.querySelector('#downloadCertDate').textContent = document.getElementById('certDate').textContent;
+		           downloadTemplate.querySelector('#downloadCertId').textContent = document.getElementById('certId').textContent;
+		           
+		           // Append to body temporarily
+		           document.body.appendChild(downloadTemplate);
+		           
+		           // Use html2canvas to capture the certificate
+		           html2canvas(downloadTemplate.querySelector('.certificate-to-download'), {
+		               scale: 2,
+		               logging: false,
+		               useCORS: true,
+		               allowTaint: true,
+		               scrollX: 0,
+		               scrollY: 0,
+		               windowWidth: 800,
+		               windowHeight: 600
+		           }).then(canvas => {
+		               const link = document.createElement('a');
+		               link.download = 'Certificate-' + document.getElementById('certId').textContent + '.png';
+		               link.href = canvas.toDataURL('image/png');
+		               link.click();
+		               
+		               // Remove the temporary element
+		               document.body.removeChild(downloadTemplate);
+		           });
+		       }
+		   </script>
+    <!-- html2canvas for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // View Certificate Button Click
+            document.querySelectorAll('.view-certificate-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const courseId = this.getAttribute('data-id');
+                    loadCertificate(courseId);
+                    createConfetti();
+                });
+            });
+            
+            // Close Certificate Button
+            document.getElementById('closeCertificate').addEventListener('click', function() {
+                document.getElementById('certificateView').style.display = 'none';
+                document.getElementById('coursesList').style.display = 'block';
+            });
+            
+            // Download Certificate Button
+            document.getElementById('downloadCertificate').addEventListener('click', function() {
+                downloadCertificate();
+                // Show download confirmation
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-check me-1"></i> Downloaded!';
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                }, 2000);
+            });
+        });
+        
+        function loadCertificate(courseId) {
+            // In a real app, you would fetch this data from your backend
+            // For demo, we'll use the first course data
+            const course = {
+                id: courseId,
+                courseName: document.querySelector(`[data-id="${courseId}"]`).closest('.card').querySelector('.card-header h5').textContent,
+                courseLevel: document.querySelector(`[data-id="${courseId}"]`).closest('.card').querySelectorAll('.card-body p')[0].textContent,
+                courseCategory: document.querySelector(`[data-id="${courseId}"]`).closest('.card').querySelectorAll('.card-body p')[1].textContent,
+                userName: "Sakthi" // This would come from your user session
+            };
+            
+            // Populate certificate template
+            document.getElementById('certStudentName').textContent = course.userName;
+            document.getElementById('certCourseName').textContent = course.courseName;
+            document.getElementById('certCourseLevel').textContent = course.courseLevel;
+            document.getElementById('certCourseCategory').textContent = course.courseCategory;
+            document.getElementById('certId').textContent = `CR-${course.id}-${Math.floor(1000 + Math.random() * 9000)}`;
+            document.getElementById('certDate').textContent = new Date().toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+            
+            // Clone the template and add to container
+            const certificate = document.getElementById('certificateTemplate').cloneNode(true);
+            certificate.style.display = 'block';
+            document.getElementById('certificateContainer').innerHTML = '';
+            document.getElementById('certificateContainer').appendChild(certificate);
+            
+            // Show certificate view
+            document.getElementById('certificateView').style.display = 'block';
+            document.getElementById('coursesList').style.display = 'none';
+        }
+        
+       
+        function createConfetti() {
+            const colors = ['#6c5ce7', '#a29bfe', '#00b894', '#00cec9', '#fd79a8', '#fdcb6e'];
+            const container = document.getElementById('certificateView');
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = -10 + 'px';
+                confetti.style.transform = 'rotate(' + Math.random() * 360 + 'deg)';
+                confetti.style.width = Math.random() * 10 + 5 + 'px';
+                confetti.style.height = Math.random() * 10 + 5 + 'px';
+                container.appendChild(confetti);
+                
+                const animationDuration = Math.random() * 3 + 2;
+                
+                confetti.style.animation = `confettiFall ${animationDuration}s ease forwards`;
+                
+                // Create keyframes dynamically
+                const style = document.createElement('style');
+                style.innerHTML = `
+                    @keyframes confettiFall {
+                        0% {
+                            opacity: 1;
+                            transform: translateY(0) rotate(0deg);
+                        }
+                        100% {
+                            opacity: 0;
+                            transform: translateY(100vh) rotate(${Math.random() * 360}deg);
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+                
+                // Remove confetti after animation
+                setTimeout(() => {
+                    confetti.remove();
+                    style.remove();
+                }, animationDuration * 1000);
+            }
+        }
+    </script>
+</body>
+</html>

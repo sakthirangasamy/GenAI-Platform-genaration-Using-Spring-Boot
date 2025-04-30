@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Course</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-light">
+
+    <div class="container mt-5">
+        <div class="card shadow-lg">
+            <div class="card-header bg-primary text-white">
+                <h4 class="m-0"><i class="fas fa-edit"></i> Edit Course</h4>
+            </div>
+            <div class="card-body">
+
+                <form th:action="@{/courses/edit/{id}(id=${course.id})}" method="post" enctype="multipart/form-data">
+                    <!-- CSRF Token -->
+                    <input type="hidden" name="_method" value="POST">
+                    
+                    <div class="mb-4">
+                        <label for="courseName" class="form-label">Course Name</label>
+                        <input type="text" class="form-control" id="courseName" name="name" th:value="${course.name}" required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="courseCategory" class="form-label">Category</label>
+                        <input type="text" class="form-control" id="courseCategory" name="category" th:value="${course.category}" required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="courseLevel" class="form-label">Level</label>
+                        <select class="form-control" id="courseLevel" name="level" required>
+                            <option value="Beginner" th:selected="${course.level == 'Beginner'}">Beginner</option>
+                            <option value="Intermediate" th:selected="${course.level == 'Intermediate'}">Intermediate</option>
+                            <option value="Advanced" th:selected="${course.level == 'Advanced'}">Advanced</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="studentsCount" class="form-label">Students Count</label>
+                        <input type="number" class="form-control" id="studentsCount" name="studentsCount" th:value="${course.studentsCount}" min="1" readonly required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="courseDescription" class="form-label">Course Description</label>
+                        <textarea class="form-control" id="courseDescription" name="description" rows="4" required th:text="${course.description}"></textarea>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="courseVideo" class="form-label">Course Video</label>
+                        <input type="file" class="form-control" id="courseVideo" name="videoFile" accept="video/*">
+                        <small class="text-muted">Accepted formats: MP4, WebM, OGG (Max 50MB)</small>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='/adminDashboard'">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

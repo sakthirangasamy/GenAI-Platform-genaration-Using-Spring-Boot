@@ -1,0 +1,784 @@
+language,question,option a,option b,option c,option d,correct
+Python,What is the output of 2 + 2?,3,4,5,6,option b
+Python,Which keyword is used to declare a variable?,var,let,const,int,option b
+Python,What is the default value of an integer?,0,1,null,undefined,option a
+Python,Which symbol is used for single-line comments?,//,#,/*,--,option b
+Python,Which of the following is a correct way to define a function?,def function(),function(),func(),void function(),option a
+Python,Which function is used to find the length of a list?,len(),length(),count(),size(),option a
+Python,Which method is used to append an element to a list?,add(),append(),insert(),extend(),option b
+Python,What is the correct way to create a dictionary in Python?,{},[],dict(),set(),option a
+Python,How do you handle exceptions in Python?,try-catch,try-except,catch-try,throw-catch,option b
+Python,Which function is used to read a file in Python?,open(),read(),file(),input(),option a
+Python,Which of the following is a Python built-in data type?,string,integer,boolean,All of the above,option d
+Python,Which of these are mutable data types in Python?,list,tuple,string,int,option a
+Python,What does the 'break' statement do?,Breaks a loop,Exits the program,Ends a function,Ends a class,option a
+Python,How do you create a class in Python?,class MyClass,def MyClass,function MyClass,class: MyClass,option a
+Python,Which operator is used for exponentiation in Python?,^,**,exp(),sqrt(),option b
+Python,What will be the output of print(type(5))?,int,str,float,None,option a
+Python,Which of these is used to indicate the start of a code block in Python?,{},[],(),Indentation,option d
+Python,Which of the following is a Python data structure?,list,array,matrix,None of the above,option a
+Python,What is the default return value of a function in Python?,None,null,undefined,false,option a
+Python,What is the correct way to initialize an empty list?,[],{},list(),None,option a
+Python,Which of the following is not a valid Python tuple?,"(1, 2)","(1, 2, 3)","(1, 2, 3, 4)","(1, 2, 3, 3)",option c
+Python,Which of the following is a valid Python string?,'hello',"""hello""","""""""hello""""""",All of the above,option d
+Python,How do you define a function in Python?,function name(),def name(),func name(),create name(),option b
+Python,Which of the following is used to raise an exception in Python?,throw,raise,catch,error,option b
+Python,Which Python library can be used for data manipulation and analysis?,numpy,pandas,matplotlib,scipy,option b
+Python,What will be the output of print(2 == 2)?,True,False,None,Error,option a
+Python,What will be the output of print(2 != 2)?,True,False,None,Error,option b
+Python,Which of the following is used for multi-line comments in Python?,//,#,/* */,""""""" """"""",option d
+Python,Which method is used to sort a list in Python?,sort(),sorted(),list.sort(),All of the above,option d
+Python,How do you define a constant in Python?,const NAME = value,CONSTANT_NAME = value,let NAME = value,None,option b
+Python,What will be the output of print(3 / 2)?,1,1.5,2,2.0,option b
+Python,What is the output of print(3 // 2)?,1,1.5,2,2.0,option a
+Python,Which method is used to convert a string to lowercase?,lower(),tolower(),toLower(),convert(),option a
+Python,Which function can be used to take user input in Python?,input(),read(),write(),scan(),option a
+Python,What will be the output of print(2**3)?,8,6,3,5,option a
+Python,Which of the following is the correct syntax to import a module in Python?,import module,import module(),include module,require module,option a
+Python,What is the output of print(10 % 3)?,1,2,0,3,option a
+Python,What is the correct syntax to define a lambda function in Python?,lambda x: x + 1,def x + 1,lambda(x): x + 1,def lambda(x): x + 1,option a
+Python,Which method is used to remove an element from a list?,remove(),pop(),delete(),All of the above,option a
+Python,How do you access the second element of a list in Python?,list[1],list[2],list[0],list(1),option a
+Python,What is the result of '5' + '2' in Python?,7,52,Error,5 2,option b
+Python,What will be the output of print(type(5.5))?,float,int,str,None,option a
+Python,Which operator is used to compare values in Python?,=,,>,<,option b
+Python,What does the 'continue' statement do?,Exit the loop,Skip the current iteration,Exit the program,Break the loop,option b
+Python,How do you initialize a set in Python?,{},[],set(),(),option c
+Python,"What does 'len([1, 2, 3])' return?",3,6,None,Error,option a
+Python,Which function is used to round a number in Python?,round(),ceil(),floor(),roundoff(),option a
+Python,What will be the output of print(bool(0))?,True,False,None,Error,option b
+Python,How do you declare a global variable in Python?,global var,declare var,let var,None,option a
+Java,Which of the following is used to declare a variable?,var,let,const,int,option d
+Java,Which method is used to convert a string to lowercase?,toLower(),lowerCase(),toLowerCase(),lower(),option c
+Java,Which of these is a primitive data type?,String,boolean,Array,Object,option b
+Java,Which of the following defines an array in Java?,int arr[],Array arr,int[] arr,arr[] int,option c
+Java,Which of the following is the correct way to create a class in Java?,class MyClass,class MyClass(),function MyClass,def MyClass,option a
+Java,Which of the following is used to import a package in Java?,include,import,using,package,option b
+Java,Which of these is not a valid keyword in Java?,int,float,real,boolean,option c
+Java,Which method is used to compare two strings in Java?,equals(),compare(),compareTo(),,option a
+Java,What is the default value of a boolean in Java?,true,false,0,null,option b
+Java,Which of the following statements is true about an interface in Java?,An interface can have a constructor,An interface can be instantiated,An interface can have default methods,None of the above,option c
+Java,Which of the following is used to declare a constant in Java?,final,constant,static,immutable,option a
+Java,Which method is used to get the length of an array in Java?,length(),size(),length,count(),option c
+Java,What is the result of 10 % 3 in Java?,1,2,3,0,option a
+Java,Which of the following is used to handle exceptions in Java?,try-catch,throw-catch,try-except,catch-try,option a
+Java,Which of the following is not a valid type of loop in Java?,for,while,do-while,foreach,option d
+Java,Which method is used to parse an integer from a string?,parseInt(),parseInteger(),toInt(),int(),option a
+Java,Which of the following is the correct way to define a constructor?,class MyClass(),constructor MyClass(),MyClass(),def MyClass(),option c
+Java,Which method is used to add an element to an ArrayList?,add(),append(),insert(),push(),option a
+Java,Which operator is used to compare two values in Java?,=,,>,!=,option b
+Java,What is the output of System.out.println(3 + 2 + '5')?,52,35,Error,5,option b
+Java,What is the correct way to create a thread in Java?,Thread thread = new Thread();,Thread thread = new Runnable();,Thread thread = new Thread(() -> { });,None of the above,option a
+Java,Which of the following methods is used to start a thread in Java?,start(),run(),execute(),begin(),option a
+Java,Which of the following is a valid method signature in Java?,void methodName(int a),methodName int(a),methodName(int a) void,int void methodName(),option a
+Java,Which of the following statements is true about the 'this' keyword in Java?,It refers to the current class instance,It refers to the superclass,It refers to the method,It refers to the object passed to the method,option a
+Java,Which access modifier makes a method accessible only within its class?,public,private,protected,default,option b
+Java,Which method is used to find the index of an element in a list in Java?,indexOf(),findIndex(),search(),getIndex(),option a
+Java,Which method is used to check if a string is empty in Java?,isEmpty(),isBlank(),length() == 0,None of the above,option a
+Java,What is the result of 4 / 2 in Java?,2,0,2.0,4,option a
+Java,Which of the following collections is unordered in Java?,List,Set,Map,Queue,option b
+Java,What does the 'continue' statement do in a loop in Java?,Ends the loop,Skips the current iteration,Pauses the loop,Exits the method,option b
+Java,Which of the following classes is used to read user input in Java?,Scanner,Reader,InputStream,Console,option a
+Java,Which of the following methods is used to remove an element from a List in Java?,remove(),delete(),pop(),erase(),option a
+Java,Which method is used to generate random numbers in Java?,Math.random(),Random.generate(),rand(),random(),option a
+Java,Which of the following is used to write output in Java?,System.out.print(),System.out.write(),System.print(),System.out.println(),option a
+Java,Which of the following is used to define a constant in Java?,final,constant,static,immutable,option a
+Java,Which of the following will throw a 'NullPointerException' in Java?,Calling method on null object,Array index out of bounds,Division by zero,File not found,option a
+Java,Which of the following methods is used to compare two strings lexicographically in Java?,compareTo(),equals(),compare(),lexicalCompare(),option a
+Java,Which keyword is used to define a method that does not return a value in Java?,void,empty,null,None,option a
+Java,Which of the following can be used to create a new object in Java?,new,create,instantiate,object,option a
+Java,What does the 'super' keyword refer to in Java?,Superclass,Current class,Method,Object,option a
+Java,What does the 'instanceof' operator do in Java?,Checks if an object is an instance of a class,Instantiates an object,Checks if two objects are equal,None of the above,option a
+Java,What will be the result of this expression: '2 + 2 + '5' in Java?,52,35,25,Error,option b
+Java,Which of the following methods is used to stop a thread in Java?,stop(),halt(),terminate(),interrupt(),option d
+Java,What is the output of the expression (int) 3.5?,3,4,0,3.5,option a
+JavaScript,Which keyword is used to declare a constant?,let,var,const,constant,option c
+JavaScript,What is the function used to parse integers in JavaScript?,parseInt(),int(),toInt(),parseInteger(),option a
+JavaScript,Which method is used to check if an object is an array?,isArray(),Array.is(),Array.isArray(),is_object(),option c
+JavaScript,Which method is used to convert a string to lowercase?,toLower(),lowerCase(),toLowerCase(),lower(),option c
+JavaScript,Which method is used to remove an element from an array in JavaScript?,remove(),pop(),delete(),shift(),option b
+JavaScript,Which of these is a valid function definition in JavaScript?,function myFunc(),def myFunc(),func myFunc(),void myFunc(),option a
+JavaScript,Which of the following is used to create a new object in JavaScript?,new Object(),Object.create(),{},All of the above,option d
+JavaScript,What will `console.log(3 == '3')` output in JavaScript?,true,false,Error,undefined,option a
+JavaScript,Which event occurs when the user clicks on an HTML element?,click,mouseClick,mousedown,mouseup,option a
+JavaScript,Which function is used to convert a string to a number in JavaScript?,parseInt(),toNumber(),parseFloat(),Number(),option d
+JavaScript,Which operator is used to check if two values are equal in JavaScript?,,,=,!=,option b
+JavaScript,Which symbol is used for single-line comments in JavaScript?,//,#,/*,--,option a
+JavaScript,Which method is used to add an element to the end of an array?,push(),append(),add(),insert(),option a
+JavaScript,Which of the following can be used to handle errors in JavaScript?,try-catch,throw-catch,error-catch,except,option a
+JavaScript,Which of the following will throw a 'ReferenceError' in JavaScript?,console.log(nonExistentVar),console.log(undefined),console.log(null),console.log(0),option a
+JavaScript,Which of the following is a valid JavaScript loop?,for,foreach,loop,do-while,option a
+JavaScript,What is the output of `console.log(5 + '5')` in JavaScript?,10,'55',55,Error,option b
+JavaScript,Which of the following is not a valid JavaScript data type?,boolean,string,array,undefined,option c
+JavaScript,Which function is used to check if an object is an array in JavaScript?,Array.is(),Array.isArray(),isArray(),instanceof Array,option b
+JavaScript,What does `typeof` operator do in JavaScript?,Checks the type of an operand,Checks the value of an operand,Converts a value to a string,Converts a value to a number,option a
+JavaScript,Which method is used to find the index of a value in an array?,findIndex(),indexOf(),search(),locate(),option b
+JavaScript,What is the result of `console.log(1 + '1' - 1)` in JavaScript?,1,11,Error,2,option d
+JavaScript,Which method is used to remove whitespace from both ends of a string?,trim(),strip(),cut(),remove(),option a
+JavaScript,Which of the following is a valid way to declare a variable in JavaScript?,let variable,variable := 5,var variable,variable = 5,option a
+JavaScript,Which of these methods is used to join two or more arrays?,concat(),merge(),join(),combine(),option a
+JavaScript,Which method is used to replace a substring within a string in JavaScript?,replace(),substring(),sub(),swap(),option a
+JavaScript,What does `JSON.parse()` do in JavaScript?,Converts a string into an object,Converts an object into a string,Parses JSON syntax,None of the above,option a
+JavaScript,What does `JSON.stringify()` do in JavaScript?,Converts an object into a string,Converts a string into an object,Parses JSON syntax,None of the above,option a
+JavaScript,Which method is used to create a new object in JavaScript?,Object(),createObject(),new Object(),new object(),option c
+JavaScript,What is the output of `console.log(!!'false')`?,true,false,Error,'false',option a
+JavaScript,Which method is used to find the length of an array in JavaScript?,length(),size(),count(),getLength(),option a
+JavaScript,Which of the following is used to check for equality of two objects in JavaScript?,,,equals(),objectEquals(),option b
+JavaScript,Which method is used to turn a string into uppercase in JavaScript?,toUpper(),upperCase(),toUpperCase(),capitalize(),option c
+JavaScript,Which method is used to remove an element from the beginning of an array?,shift(),pop(),delete(),remove(),option a
+JavaScript,Which of these is a valid way to add a property to an object?,obj.property = value,obj['property'] = value,"obj.set('property', value)",All of the above,option d
+JavaScript,Which of the following is the correct way to define a function in JavaScript?,function() {},def function() {},void function() {},function func() {},option d
+JavaScript,Which keyword is used to define a function expression?,function,fun,let,const,option a
+JavaScript,Which of the following is used to create an anonymous function?,function() {},func(),lambda,const func(),option a
+C++,Which of the following is the correct way to declare a variable in C++?,int x;,x = int;,variable int x;,int x = 5;,option a
+C++,What is the output of `cout << 5 / 2;`?,2,2.5,3,Error,option a
+C++,Which operator is used to access a class member?,::,.,&,->,option b
+C++,Which of the following is the correct syntax for declaring a function?,function myFunction(),void myFunction(),int myFunction(),func myFunction(),option b
+C++,Which of the following is used to create a constant in C++?,constant variable = 5;,const variable = 5;,const int variable = 5;,final int variable = 5;,option c
+C++,Which function is used to read input from the user in C++?,cin,input(),scanf,get(),option a
+C++,What is the output of `cout << 2 + 3 * 4;`?,14,20,24,22,option a
+C++,Which of the following is used to define a class in C++?,class MyClass;,class MyClass(),class: MyClass,MyClass class,option a
+C++,Which method is used to find the length of a string in C++?,length(),size(),getSize(),strlen(),option d
+C++,Which operator is used to allocate memory dynamically?,new,malloc,calloc,alloc,option a
+C++,Which of these is used to deallocate dynamically allocated memory in C++?,delete,free,delete[],free[],option a
+C++,What does the `this` pointer refer to in C++?,A class object,The class itself,Current object,Previous object,option c
+C++,Which function is used to find the size of a vector in C++?,length(),size(),getSize(),count(),option b
+C++,Which of the following is correct for a while loop in C++?,while(condition){},while {}(condition),while{} condition,while (condition:),option a
+C++,Which of these is the correct way to declare a pointer in C++?,int ptr;,int* ptr;,int ptr*;,pointer int ptr;,option b
+C++,Which of the following is the correct syntax for a for loop in C++?,for(i=0; i<10; i++){},for(int i = 0; i < 10; i++){},for(i<10; i++){},for(int i=0; i<10){i++;},option b
+C++,What does the `break` statement do in C++?,Exits the loop,Ends the program,Continues to the next loop,Returns a value,option a
+C++,What is the correct way to allocate memory for an array of 10 integers in C++?,int arr[10];,int* arr = new int[10];,int arr[] = new int[10];,int* arr = new int();,option b
+C++,Which of the following is used for function overloading in C++?,Same function name with different parameters,Different function names,Same return type,Same parameters,option a
+C++,What is the default access specifier for class members in C++?,private,public,protected,default,option a
+C++,Which of these is used to define a constant in C++?,const variable;,constant variable;,final variable;,immutable variable;,option a
+C++,Which keyword is used to inherit a class in C++?,inherit,extends,implements,public,option d
+C++,What is the correct way to declare a static variable in C++?,static int x;,int static x;,static var x;,var static x;,option a
+C++,Which of the following is true about a constructor in C++?,It has no return type,It has a return type,It must be declared as private,It is called only once,option a
+C++,What does the `delete[]` operator do in C++?,Frees memory allocated by an array,Frees memory allocated by new,Frees memory allocated for a single element,Does nothing,option a
+C++,Which of these is used to access base class members in C++?,::,->,.,super,option d
+C++,What is the correct way to write a switch case statement in C++?,switch(x) { case 1: break; },switch(x) { case 1 break; },switch(x): case 1;,case 1: break; switch(x);,option a
+C++,Which function is used to compare two strings in C++?,compare(),stringCompare(),strcmp(),equal(),option c
+C++,Which of the following is used to dynamically allocate memory in C++?,new,malloc,calloc,malloc(),option a
+C++,Which of these is used to define a pointer in C++?,int ptr;,ptr int;,int* ptr;,pointer int ptr;,option c
+C++,Which of the following can be used to convert a string to an integer in C++?,atoi(),parseInt(),convert(),toInt(),option a
+C++,Which of the following is the correct syntax for a do-while loop in C++?,do {} while();,do while() {},do {} while ();,do {}; while ();,option a
+C++,Which operator is used for type casting in C++?,::,(),->,&,option b
+C++,What does the `continue` statement do in C++?,Ends the current iteration and continues with the next iteration,Ends the loop,Exits the program,Returns to the beginning of the loop,option a
+C++,Which of the following is the correct way to write an `if` condition in C++?,if (condition) {},if condition{},if { condition },if {} condition,option a
+C++,Which method is used to initialize a string object in C++?,string myStr = 'hello';,string myStr = hello;,string myStr('hello');,string myStr('hello');,option a
+C++,Which of the following is true about pointers in C++?,Pointers store memory addresses,Pointers are used for storing objects,Pointers are always initialized,Pointers cannot point to arrays,option a
+C++,What is the default return type for a function in C++?,int,void,float,char,option a
+C++,Which operator is used to assign a value to a pointer in C++?,*,&,->,=,option d
+C++,Which of the following is correct for dynamic memory allocation in C++?,new,malloc,calloc,alloc,option a
+Ruby,Which of the following is used to declare a variable in Ruby?,let,var,def,my,option a
+Ruby,Which method is used to define a method in Ruby?,define,def,function,method,option b
+Ruby,Which keyword is used to define a constant in Ruby?,constant,CONSTANT,const,CONSTANT_NAME,option d
+Ruby,Which operator is used for string concatenation in Ruby?,+,&,-,*,option a
+Ruby,What is the default return value of a method in Ruby?,nil,false,true,void,option a
+Ruby,Which of the following is used to start a block in Ruby?,do,begin,loop,block,option a
+Ruby,Which of the following is correct for defining a loop in Ruby?,loop { },while { },for i in 1..10,repeat until { },option a
+Ruby,What is the correct syntax for an `if` condition in Ruby?,if condition,if condition do,if condition{},if condition;,option a
+Ruby,How do you define a class in Ruby?,class MyClass,class MyClass(),MyClass class,class: MyClass,option a
+Ruby,Which keyword is used to create an instance variable in Ruby?,@,$,instance,variable,option a
+Ruby,What is the output of `puts 1 + 2` in Ruby?,3,12,Error,nil,option a
+Ruby,Which method is used to iterate over a collection in Ruby?,each,map,loop,for,option a
+Ruby,How do you define an array in Ruby?,[],{},(),array(),option a
+Ruby,Which of the following is used to define a method that returns a value in Ruby?,def method_name,method method_name,def method(),return method_name,option a
+Ruby,Which method is used to join elements of an array into a string in Ruby?,join(),concat(),to_string(),merge(),option a
+Ruby,Which of the following is correct for raising an exception in Ruby?,raise Error,throw Error,raise() Error,error raise(),option a
+Ruby,Which of the following is the correct syntax for an array in Ruby?,"array[1,2,3]","array(1,2,3)","array{1,2,3}","array([1,2,3])",option a
+Ruby,What is the method used to find the length of a string in Ruby?,length(),size(),count(),str_length(),option a
+Ruby,How do you define a hash in Ruby?,{},[],(),hash(),option a
+Ruby,How can you access an element from an array in Ruby?,array[index],array[index()],array.get(index),array.at(index),option a
+Ruby,Which method is used to check if a string contains a substring in Ruby?,include?,contains?,has?,in?,option a
+Ruby,Which keyword is used to break out of a loop in Ruby?,exit,return,break,continue,option c
+Ruby,Which of the following is used to inherit a class in Ruby?,inherit,extends,include,class <,option d
+Ruby,What is the default value of a global variable in Ruby?,nil,undefined,false,null,option a
+Ruby,Which of the following is used to create an infinite loop in Ruby?,loop {},while true,for i,for true,option b
+Ruby,Which of the following is correct for accessing the value of an instance variable?,@variable,variable@,$variable,@$variable,option a
+Ruby,What will be the output of `puts 10 > 5 ? 'Yes' : 'No'`?,Yes,No,Error,True,option a
+Ruby,Which method is used to remove an element from a hash by key in Ruby?,delete,remove,delete_key,clear,option a
+Ruby,Which of the following methods can be used to convert a string to an integer in Ruby?,to_i,parseInt,int(),convert(),option a
+Ruby,Which method is used to remove leading whitespaces from a string in Ruby?,strip,trim,lstrip,rstrip,option a
+Ruby,How do you define a range in Ruby?,(1..10),[1..10],{1..10},(1..10},option a
+Ruby,Which of the following is correct for calling a method in Ruby?,method(),method;,method[],method(){},option a
+Ruby,"What will the following code output? `puts [1, 2, 3].map { |x| x * 2 }`","[2, 4, 6]","[1, 2, 3]","[3, 6, 9]",Error,option a
+Ruby,How do you check if a hash contains a specific key in Ruby?,hash.include?(),hash.key?,hash.has_key?,hash.contains_key?,option b
+Ruby,Which of the following is used to define a class method in Ruby?,def self.method,self.method,class method,def class.method,option a
+Ruby,What is the correct syntax for accessing the second element of an array in Ruby?,array[2],array[1],array(1),array.1,option b
+Ruby,Which method is used to split a string into an array of substrings in Ruby?,split(),divide(),separate(),break(),option a
+Ruby,Which method is used to find the class of an object in Ruby?,class(),type(),kind_of?,class_of(),option a
+Ruby,Which of the following is the correct way to call a class method in Ruby?,Class.method,Class.method(),Class::method,method(Class),option b
+Ruby,Which of the following is used to append an element to an array in Ruby?,push(),append(),insert(),concat(),option a
+Ruby,How do you create a symbol in Ruby?,:symbol,symbol(),symbol,create symbol,option a
+Ruby,Which of the following is used to exit a program in Ruby?,exit,quit,stop,terminate,option a
+Ruby,Which of the following is used for error handling in Ruby?,try-except,raise-try,begin-rescue,catch-finally,option c
+Ruby,What does `puts` do in Ruby?,Prints output to the console,Defines a method,Creates a variable,Starts a loop,option a
+PHP,Which symbol is used to define a variable in PHP?,$,&,!,@,option a
+PHP,Which function is used to output data in PHP?,echo,print,output,printf,option a
+PHP,Which of the following is the correct way to define a constant in PHP?,const constant_name = value,constant constant_name = value,"define('CONSTANT', value)","define.constant('CONSTANT', value)",option c
+PHP,Which method is used to read input from the user in PHP?,read(),input(),get(),fgets(),option d
+PHP,What is the correct syntax for a while loop in PHP?,while(condition) { },while (condition);,while condition { },while { condition },option a
+PHP,Which of the following is the correct way to declare an array in PHP?,"array(1, 2, 3)","[1, 2, 3]",array[],"array{1, 2, 3}",option a
+PHP,Which function is used to count the elements in an array in PHP?,count(),size(),length(),getSize(),option a
+PHP,What is the correct way to declare a class in PHP?,class MyClass { },MyClass class { },class MyClass,class: MyClass { },option a
+PHP,Which keyword is used to create a constant in PHP?,const,define,constant,create,option b
+PHP,How do you define a function in PHP?,def function_name(),function function_name(),func function_name(),def func(),option b
+PHP,Which of the following is correct for concatenating strings in PHP?,&,+,.,concatenate,option c
+PHP,What is the correct way to include another file in PHP?,include('filename'),import('filename'),load('filename'),include(filename),option a
+PHP,Which function is used to find the length of a string in PHP?,strlen(),size(),length(),count(),option a
+PHP,Which of the following is used to terminate a loop in PHP?,exit,stop,break,continue,option c
+PHP,Which of the following functions is used to get the type of a variable in PHP?,gettype(),type(),get_variable_type(),var_type(),option a
+PHP,What will the following code output: `echo 5 + 10;`?,15,510,5 + 10,Error,option a
+PHP,How do you declare a variable in PHP?,var variable_name,$variable_name,declare variable_name,let variable_name,option b
+PHP,Which of the following is correct for checking if a variable is set in PHP?,isset(),is_set(),check(),exists(),option a
+PHP,Which function is used to redirect to another page in PHP?,redirect(),location(),header(),url(),option c
+PHP,Which of the following methods is used to start a session in PHP?,start_session(),session_start(),session_open(),begin_session(),option b
+PHP,How do you declare a multi-dimensional array in PHP?,"array[1, 2, 3][4, 5]","array(1, 2, 3, array(4, 5))","array(1, 2, 3, [4, 5])","array[[1, 2], [3, 4]]",option b
+PHP,What is the output of `echo (int) 4.5;` in PHP?,4,5,4.5,Error,option a
+PHP,Which operator is used for comparison in PHP?,=,,,!=,option b
+PHP,Which of the following is the correct way to define a constant array in PHP?,"const array = [1, 2, 3]","define('ARRAY', [1, 2, 3])","array('1', '2', '3')","define('ARRAY', '1, 2, 3')",option b
+PHP,How do you access the value of a session variable in PHP?,$_SESSION['variable'],$session['variable'],session_get('variable'),session('variable'),option a
+PHP,Which of the following is used to open a file in PHP?,fopen(),file_open(),open_file(),open(),option a
+PHP,Which function is used to extract a substring from a string in PHP?,substr(),substring(),cut(),slice(),option a
+PHP,Which of the following is correct for an anonymous function in PHP?,function() { },function { },anonymous() { },func() { },option a
+PHP,Which operator is used to access object properties in PHP?,->,.,::,#,option a
+PHP,What is the correct way to get the current timestamp in PHP?,timestamp(),current_time(),time(),get_timestamp(),option c
+PHP,Which of the following is used to delete a variable in PHP?,remove,unset,delete,null,option b
+PHP,What is the correct way to create an object in PHP?,new ClassName(),create ClassName(),ClassName.new(),object ClassName(),option a
+PHP,What function is used to compare two strings in PHP?,compare(),strcmp(),compare_strings(),str_equal(),option b
+PHP,Which function is used to replace a substring in a string in PHP?,replace(),str_replace(),substr_replace(),replace_string(),option b
+PHP,What is the correct way to access a value from an associative array in PHP?,array[key],array[key()],array{key},array.get(key),option a
+PHP,Which method is used to include a file once in PHP?,include_once(),once_include(),include_file(),file_include_once(),option a
+PHP,Which of the following functions is used to check if a file exists in PHP?,is_file(),file_exists(),exists(),check_file(),option b
+PHP,How do you declare a static method in PHP?,static function method(),function static method(),static method(),method static(),option a
+PHP,How do you close a file in PHP?,close(),file_close(),fclose(),close_file(),option c
+PHP,What is the output of `echo 10 / 4;`?,2,2.5,3,Error,option b
+Go,Which symbol is used for single-line comments in Go?,#,//,/*,--,option b
+Go,Which of the following is used to declare a variable in Go?,let,var,const,define,option b
+Go,Which of the following types does Go support?,int,string,float,all of the above,option d
+Go,What is the default value of a string in Go?,null,undefined,0,empty string,option d
+Go,Which keyword is used to define a constant in Go?,constant,let,var,const,option d
+Go,Which function is used to get the length of an array in Go?,length(),len(),size(),array_size(),option b
+Go,How do you declare a function in Go?,func function_name(),function function_name(),def function_name(),declare function_name(),option a
+Go,Which of the following is correct for defining a struct in Go?,type MyStruct struct {},MyStruct = struct {},struct MyStruct {},type struct MyStruct,option a
+Go,How do you handle an error in Go?,error(),try-catch,if err != nil,catch(err),option c
+Go,What is the default value of an uninitialized int in Go?,0,1,nil,undefined,option a
+Go,How do you convert a string to an integer in Go?,toInt(),strconv.Atoi(),int(),parseInt(),option b
+Go,Which of the following methods is used to define a method for a struct in Go?,func method(){},method func(){},method(),func (struct) method(){},option d
+Go,What does the 'defer' keyword do in Go?,Executes function before returning,Executes function after returning,Delays function execution until the function ends,None of the above,option c
+Go,Which type of variable is immutable by default in Go?,mutable,constant,immutable,variable,option c
+Go,Which function is used to parse a string into a float in Go?,parseFloat(),strconv.ParseFloat(),float64(),toFloat(),option b
+Go,Which function is used to create a new instance of a goroutine?,createGoroutine(),go(),goroutine(),startGoroutine(),option b
+Go,Which of the following can be used to handle concurrency in Go?,goroutines,async,threads,tasks,option a
+Go,How do you define a map in Go?,map[key]value,key:value,"map(key, value)",map{},option a
+Go,What does the 'select' statement do in Go?,Selects a random value,Selects the fastest case,Used for handling multiple channels,None of the above,option c
+Go,Which of the following methods is used to declare a variable in Go?,var variable_name,variable variable_name,let variable_name,define variable_name,option a
+Go,How do you create a new channel in Go?,channel make(),chan make(),channel(),make(chan),option d
+Go,Which function is used to close a channel in Go?,close(),channel.close(),channel_shutdown(),close_channel(),option a
+Go,Which keyword is used to create an alias in Go?,type,alias,typealias,newtype,option a
+Go,Which of the following is true about Go's garbage collection?,Go has automatic garbage collection,Go uses manual garbage collection,Go uses reference counting,Go has no garbage collection,option a
+Go,Which package is commonly used for handling input and output in Go?,fmt,io,input,inputoutput,option a
+Go,How do you create a slice in Go?,"[]int{1, 2, 3}","slice(1, 2, 3)","new_slice(1, 2, 3)","create_slice(1, 2, 3)",option a
+Go,Which of the following is used to execute a block of code in Go?,defer,go,func,call,option c
+Go,What is the function signature for the main function in Go?,func main(){},func main(){return},main func(),func main{ },option a
+Go,What is the function used to generate a random number in Go?,rand(),math.rand(),math.random(),randInt(),option a
+Go,What is the default value of a boolean in Go?,true,false,nil,undefined,option b
+Go,Which of the following is used to implement interfaces in Go?,method signature,type,struct,all of the above,option d
+Go,How do you import a package in Go?,import 'package_name',import package_name,package import 'name',import 'name',option a
+Go,How do you declare a global variable in Go?,var variable_name,global variable_name,type variable_name,let variable_name,option a
+Go,What is the output of `fmt.Println(5 + 3)` in Go?,5 + 3,8,53,Error,option b
+Go,What function is used to print formatted output in Go?,print(),fmt.Print(),fmt.Println(),fmt.Printf(),option d
+Go,Which of the following is true about Go's memory management?,Go uses stack allocation only,Go uses heap allocation only,Go uses both stack and heap memory,Go has no memory management,option c
+Go,Which of the following is used for reading user input in Go?,input(),fmt.Scan(),read(),user_input(),option b
+Go,How can you return multiple values from a function in Go?,"return val1, val2","return(val1, val2)","return(val1, val2)","return (val1, val2)",option a
+Go,How do you initialize a map in Go?,make(map),map{},new_map(),initialize_map(),option a
+Swift,What keyword is used to define a constant in Swift?,let,const,var,final,option a
+Swift,Which type is used to represent a floating-point number in Swift?,Int,Double,Float,Decimal,option b
+Swift,Which of the following is the correct way to create an array in Swift?,[],"[1, 2, 3]","array(1, 2, 3)","Array(1, 2, 3)",option b
+Swift,What is the default value of a boolean in Swift?,true,false,nil,undefined,option b
+Swift,How do you define a function in Swift?,def function(),func function(),function(),define function(),option b
+Swift,What symbol is used for single-line comments in Swift?,#,//,/*,--,option b
+Swift,How do you create a dictionary in Swift?,{},[],dict(),Dictionary(),option a
+Swift,Which function is used to read input from the user in Swift?,read(),getInput(),input(),readLine(),option d
+Swift,Which keyword is used to define an optional in Swift?,optional,opt,?,null,option c
+Swift,Which type of loop is used to iterate through arrays in Swift?,for,foreach,while,repeat,option a
+Swift,How do you initialize a class in Swift?,className(),ClassName(),new ClassName(),init(),option b
+Swift,Which operator is used to concatenate strings in Swift?,&,+,.,-,option b
+Swift,Which function is used to convert a string to an integer in Swift?,int(),toInt(),stringToInt(),Int(),option d
+Swift,Which of the following is the correct way to define an array of integers in Swift?,"var arr = [1, 2, 3]","var arr: [Int] = [1, 2, 3]","var arr = Array(1, 2, 3)","arr = [1, 2, 3]",option a
+Swift,Which function is used to print output to the console in Swift?,println(),print(),echo(),output(),option b
+Swift,What does the 'guard' keyword do in Swift?,Checks for conditions,Exits the current function,Used to declare a constant,None of the above,option a
+Swift,Which of the following is used for error handling in Swift?,throw,catch,try-catch,do-catch,option d
+Swift,Which of these is a valid optional type in Swift?,String?,Optional String,String[],String!,option a
+Swift,Which operator is used to unwrap an optional in Swift?,?,!,#,&,option b
+Swift,How do you define a closure in Swift?,func(){},{ },closure {},def(){},option b
+Swift,Which of the following data types does Swift support?,Int,Double,String,All of the above,option d
+Swift,What is the function signature for the main function in Swift?,func main(){},func main{ },main func(){},None of the above,option d
+Swift,Which symbol is used for multi-line comments in Swift?,#,//,/* */,--,option c
+Swift,What is the correct syntax for a while loop in Swift?,while condition {},while (condition){},while{} condition,loop while condition,option a
+Swift,Which type of data structure is an optional in Swift?,Array,Dictionary,Set,None of the above,option d
+Swift,Which of the following is true about arrays in Swift?,Arrays are immutable,Arrays cannot hold different types of data,Arrays can hold any type of data,Arrays are indexed by names,option b
+Swift,How do you add an item to the end of an array in Swift?,append(),insert(),add(),insertAtEnd(),option a
+Swift,Which method is used to sort an array in Swift?,sort(),sorted(),arr.sort(),arr.sorted(),option d
+Swift,What does 'Optional Binding' allow you to do in Swift?,Handle optionals safely,Unwrap optionals,Handle errors,Both A and B,option d
+Swift,How do you define an empty dictionary in Swift?,var dict = {},var dict = [],var dict = [:],dict = {},option c
+Swift,Which of the following statements is correct for class inheritance in Swift?,class Child : Parent,class Child -> Parent,class Child inherits Parent,class Child : inherits Parent,option a
+Swift,What does the 'defer' statement do in Swift?,Executes at the beginning of the function,Executes only once,Executes when the function exits,None of the above,option c
+Swift,Which keyword is used to define a protocol in Swift?,protocol,define,interface,class,option a
+Swift,What is the output of `print(5 + 3)` in Swift?,8,53,5+3,Error,option a
+Swift,How do you create a set in Swift?,var set = Set(),var set = [],var set = {},set = [],option a
+Swift,What is the default value of an uninitialized integer in Swift?,0,nil,undefined,1,option b
+Swift,How do you iterate through a dictionary in Swift?,"for key, value in dict",for key in dict,"foreach key, value in dict",for each in dict,option a
+Swift,Which type of loop is used to iterate over a range of numbers in Swift?,for,while,repeat,loop,option a
+Swift,Which of the following is a valid tuple in Swift?,"var tuple = (1, 'hello')","var tuple = (1, 'hello', true)","var tuple = (1, 2)",All of the above,option d
+Swift,Which type is used to represent a boolean value in Swift?,Bool,Boolean,bool,boolean,option a
+Kotlin,Which keyword is used to define a variable in Kotlin?,let,var,const,define,option b
+Kotlin,Which function is used to convert a string to uppercase in Kotlin?,toUpper(),uppercase(),toUpperCase(),upperCase(),option c
+Kotlin,What is the default value of a boolean variable in Kotlin?,true,false,null,undefined,option b
+Kotlin,What is the function to read input from the user in Kotlin?,input(),read(),readLine(),scanner(),option c
+Kotlin,Which of the following is used to define a function in Kotlin?,def functionName(),function functionName(),fun functionName(),func functionName(),option c
+Kotlin,What is the correct way to define an array in Kotlin?,var arr = [],"var arr = arrayOf(1, 2, 3)","var arr = Array(1, 2, 3)","arr = [1, 2, 3]",option b
+Kotlin,Which operator is used for string concatenation in Kotlin?,&,+,.,#,option b
+Kotlin,Which of the following is used to define a constant in Kotlin?,let,var,const,val,option d
+Kotlin,Which function is used to convert a string to an integer in Kotlin?,parseInt(),stringToInt(),Int.parse(),toInt(),option d
+Kotlin,Which type is used to represent a floating-point number in Kotlin?,Double,Float,Int,Decimal,option a
+Kotlin,What is the keyword used to define a class in Kotlin?,class,data class,className,define class,option a
+Kotlin,Which of the following is the correct syntax to define a nullable type in Kotlin?,String?,String!?,String??,String[],option a
+Kotlin,Which of these is the correct way to check for nullability in Kotlin?,str == null,str == ?,str == undefined,str != null,option d
+Kotlin,How do you create a mutable list in Kotlin?,var list = listOf(),var list = mutableListOf(),var list = [],var list = ArrayList(),option b
+Kotlin,What is the function used to find the length of a string in Kotlin?,len(),length(),getLength(),size(),option b
+Kotlin,Which operator is used to compare two variables in Kotlin?,,,=,equals(),option a
+Kotlin,How do you define a lambda function in Kotlin?,{ x -> x * x },lambda(x) { x * x },function(x) => x * x,-> { x => x * x },option a
+Kotlin,What does the 'when' keyword do in Kotlin?,Defines a loop,Executes a conditional expression,Declares a class,Defines a function,option b
+Kotlin,Which of the following is the correct way to handle exceptions in Kotlin?,try-catch,try-except,try-catch-finally,catch-try,option c
+Kotlin,What is the keyword used to create an interface in Kotlin?,interface,implement,abstract,def,option a
+Kotlin,Which type of loop is used to iterate through a range in Kotlin?,for,while,foreach,do-while,option a
+Kotlin,What is the function to remove an item from a list in Kotlin?,remove(),delete(),pop(),removeAt(),option d
+Kotlin,Which of the following is the correct way to define a null-safe call in Kotlin?,variable?.method(),variable!method(),variable.method()?,variable?.method()?,option a
+Kotlin,Which type is used to represent a boolean value in Kotlin?,bool,boolean,Boolean,boolen,option c
+Kotlin,Which method is used to add an element to the end of a mutable list in Kotlin?,add(),append(),insert(),push(),option a
+Kotlin,Which of the following is the correct way to create a set in Kotlin?,set(),hashSetOf(),[],setOf(),option d
+Kotlin,What is the function to remove all items from a list in Kotlin?,clear(),empty(),deleteAll(),clearList(),option a
+Kotlin,What does the 'apply' function do in Kotlin?,Executes a block of code,Returns a boolean value,Creates a new object,Transforms a string,option a
+Kotlin,Which of these is the correct way to create a range of numbers in Kotlin?,1..10,1 to 10,10->1,"range(1, 10)",option a
+Kotlin,What is the function used to check if a string contains another string in Kotlin?,contains(),include(),containsString(),find(),option a
+Kotlin,Which of the following is the correct way to define a nullable variable in Kotlin?,var str: String,var str: String? = null,var str: String = null,str: String = null,option b
+Kotlin,Which type of collection allows duplicates in Kotlin?,Set,Map,List,HashMap,option c
+Kotlin,What is the function used to join elements of a list into a string in Kotlin?,toString(),join(),joinToString(),combine(),option c
+Kotlin,What does the 'is' operator do in Kotlin?,Checks for type,Checks for equality,Checks for null,Checks for subclass,option a
+Kotlin,Which function is used to get the first element of a list in Kotlin?,first(),head(),top(),getFirst(),option a
+Kotlin,What is the function to find the maximum value in a list of numbers in Kotlin?,max(),findMax(),maximum(),maxValue(),option a
+Kotlin,What is the correct syntax for a while loop in Kotlin?,while condition,while(condition),loop while,while (condition),option d
+Kotlin,Which function is used to filter a collection in Kotlin?,filter(),find(),extract(),select(),option a
+Kotlin,What is the function used to sort a list in Kotlin?,sort(),order(),sortList(),sorted(),option d
+Rust,Which keyword is used to declare a variable in Rust?,var,let,const,define,option b
+Rust,What is the default value of a variable in Rust?,null,undefined,0,empty string,option b
+Rust,What is the correct way to define a constant in Rust?,const CONSTANT_NAME = value,let CONSTANT_NAME = value,const CONSTANT_NAME : Type = value,var CONSTANT_NAME = value,option c
+Rust,Which of these is used to access a value of a reference in Rust?,&,*,ref,->,option b
+Rust,What is the function to get the length of a string in Rust?,length(),size(),getLength(),len(),option d
+Rust,Which operator is used to check equality in Rust?,,equals(),=,,option a
+Rust,Which type is used to represent a boolean in Rust?,bool,boolean,true/false,int,option a
+Rust,Which function is used to parse a string to an integer in Rust?,parseInt(),toInt(),parse(),to_integer(),option c
+Rust,What does the `match` keyword do in Rust?,Checks for equality,Executes conditional logic,Defines a loop,Declares a constant,option b
+Rust,Which keyword is used to define a block of code that may return a value in Rust?,fn,block,let,value,option a
+Rust,Which of these is the correct way to handle errors in Rust?,try-catch,expect,unwrap,Result<>,option d
+Rust,How do you define a mutable variable in Rust?,let mut var = value,let var = value,var mut = value,mut let var = value,option a
+Rust,Which function is used to check if an option is `Some` in Rust?,isSome(),is_none(),is_some(),none(),option c
+Rust,Which of the following is the correct syntax for a `while` loop in Rust?,while condition,while (condition),loop while,while condition do,option b
+Rust,What is the correct way to define a vector in Rust?,let vec = Vec::new(),let vec = Vec[],let vec = [],let vec = Vec::[],option a
+Rust,Which operator is used to dereference a reference in Rust?,&,*,.,->,option b
+Rust,Which function is used to convert a string to a number in Rust?,parse(),toNumber(),toInt(),from_str(),option a
+Rust,What does the `Option` type represent in Rust?,A result of an operation,A container for a value that may or may not be present,An array of values,A reference type,option b
+Rust,What is the default type of a number in Rust?,int,i32,float,double,option b
+Rust,Which of the following is used to define a mutable reference in Rust?,mut &x,ref mut x,x mut,mut x,option a
+Rust,Which of these is used to create a struct in Rust?,struct MyStruct,new MyStruct,struct: MyStruct,struct MyStruct(),option a
+Rust,How do you define a constant in Rust?,const MY_CONST = 10,let MY_CONST = 10,const MY_CONST: i32 = 10,val MY_CONST = 10,option c
+Rust,Which of the following is the correct way to initialize an array of integers in Rust?,"let arr = [1, 2, 3]","let arr: [i32; 3] = [1, 2, 3]",let arr = [1..10],"arr = [1, 2, 3]",option b
+Rust,What is the correct way to create an immutable reference in Rust?,let ref x = value,let &x = value,let ref &x = value,let x = &value,option b
+Rust,Which of the following is used to create an enum in Rust?,enum MyEnum,MyEnum enum,enum: MyEnum,enum MyEnum(),option a
+Rust,Which operator is used to compare two values for inequality in Rust?,!=,<>,!==,notEqual(),option a
+Rust,How do you define a reference in Rust?,let x = &value,let &x = value,ref value = x,ref &x = value,option a
+Rust,Which of the following is used to perform pattern matching in Rust?,match,switch,if,pattern,option a
+Rust,Which function is used to read user input in Rust?,read(),input(),read_line(),get_input(),option c
+Rust,Which of the following is the correct way to call a method on a struct in Rust?,object.method(),object::method(),method(object),object->method(),option a
+Rust,What is the correct way to pass a reference to a function in Rust?,&x,x&,ref x,value->x,option a
+Rust,What does the `unwrap()` function do in Rust?,Returns a value from an Option if Some,Handles errors,Unwraps a tuple,Converts an Option to a Result,option a
+Rust,Which of the following is used to create a vector in Rust?,Vec::new(),new Vec[],Vec[],vec![],option d
+Rust,What is the function used to clone a value in Rust?,clone(),copy(),duplicate(),replicate(),option a
+Rust,Which of the following is used to check if a value is `None` in Rust?,isNone(),none(),is_none(),isEmpty(),option c
+Rust,What is the correct way to define a closure in Rust?,|x| x + 1,fn(x) -> x + 1,x => x + 1,fn(x): x + 1,option a
+Rust,How do you define a trait in Rust?,trait MyTrait,trait: MyTrait,def MyTrait,class MyTrait,option a
+Rust,Which function is used to exit the program in Rust?,exit(),quit(),return(),process::exit(),option d
+Rust,How do you define a function that takes ownership of an argument in Rust?,fn func(value: T),fn func(value: T) -> T,fn func(T) -> T,fn func(value: T),option d
+C#,Which keyword is used to declare a variable in C#?,var,let,const,int,option a
+C#,Which keyword is used to declare a constant in C#?,const,static,final,readonly,option a
+C#,What is the default value of an integer in C#?,0,1,null,undefined,option a
+C#,Which of these is used to define a method in C#?,void methodName(),methodName(),def methodName(),function methodName(),option a
+C#,Which of these is the correct way to define a class in C#?,class MyClass {},class MyClass,class MyClass() {},class: MyClass {},option a
+C#,Which keyword is used to create a new object in C#?,new,object,create,var,option a
+C#,Which symbol is used for comments in C#?,//,#,/*,--,option a
+C#,What is the correct way to define a list in C#?,List<T> myList = new List<T>();,List<T> myList = new List();,ArrayList myList = new ArrayList();,List<T> myList = new();,option a
+C#,Which method is used to convert a string to an integer in C#?,parseInt(),ToInt32(),Convert.ToInt32(),parse(),option c
+C#,Which of the following is used to check for equality in C#?,,equals(),,isEqualTo(),option a
+C#,Which keyword is used to create an interface in C#?,interface,class,impl,abstract,option a
+C#,How do you define an array in C#?,int[] arr,int arr[],arr[] int,Array arr,option a
+C#,Which of these is used to create a constructor in C#?,class Constructor(),Constructor(),void Constructor(),public Constructor(),option d
+C#,What is the correct way to declare a variable in C#?,int x;,x = 10;,var int x;,int x = 10;,option d
+C#,What is the default value of a string in C#?,empty string,null,undefined,0,option b
+C#,Which of these is the correct way to declare an array in C#?,"int[] arr = {1,2,3};","int arr[] = {1, 2, 3};","int arr = new int[] {1, 2, 3};","arr = [1, 2, 3];",option a
+C#,Which of the following is used for pattern matching in C#?,match,case,switch,match-case,option c
+C#,Which of these is used to define a method in C#?,void method(),method(),def method(),function method(),option a
+C#,How do you implement exception handling in C#?,try-catch,try-except,catch-try,throw-catch,option a
+C#,Which of these is used to call a base class method in C#?,base.method(),super.method(),this.method(),call.base.method(),option a
+C#,Which of the following is used to declare a constant in C#?,const,readonly,static,define,option a
+C#,Which function is used to sort a list in C#?,Sort(),OrderBy(),OrderByDescending(),List.Sort(),option d
+C#,How do you concatenate two strings in C#?,string1 + string2,string1.concat(string2),"string.Concat(string1, string2)",string1.append(string2),option c
+C#,Which keyword is used to implement a delegate in C#?,delegate,action,event,function,option a
+C#,Which method is used to convert a string to a date in C#?,DateTime.Parse(),Convert.ToDateTime(),DateTime.ParseExact(),string.ToDateTime(),option a
+C#,Which of these is used to inherit from a class in C#?,class MyClass : BaseClass,class MyClass extends BaseClass,MyClass inherits BaseClass,class MyClass(BaseClass),option a
+C#,What is the purpose of the `using` keyword in C#?,Namespace import,File handling,Creating a loop,Class definition,option a
+C#,Which operator is used to perform type casting in C#?,:,(),as,->,option b
+C#,How do you define a property in C#?,public string Name { get; set; },public property string Name { get; set; },property string Name { set; get; },public Name get() { },option a
+C#,Which of these is used to break a loop in C#?,break,continue,stop,exit,option a
+C#,Which method is used to convert a string to lowercase in C#?,ToLower(),ToLowerCase(),lower(),to_lower(),option a
+C#,What is the purpose of the `this` keyword in C#?,Refers to the current instance of the class,Refers to the parent class,Refers to the method,Refers to the current method,option a
+C#,Which of these is used to implement a property in C#?,get; set;,get() { return; },set() { return; },public property Name { },option a
+C#,Which method is used to get the length of a string in C#?,Length(),size(),getSize(),strLength(),option a
+C#,What is the correct way to declare a tuple in C#?,"var tuple = (1, 'hello')","tuple = (1, 'hello')",var tuple = (1; 'hello'),"tuple = [1, 'hello']",option a
+C#,Which of the following is the correct way to handle null values in C#?,Null Coalescing Operator,Try-Catch Block,Nullable types,Optional chaining,option a
+C#,How do you declare a multi-line comment in C#?,// comment,/* comment */,# comment,<!-- comment -->,option b
+C#,Which of these is used to declare a static method in C#?,static void Method(),void static Method(),Method() static,static Method(),option a
+C#,How do you create a new thread in C#?,new Thread(),Thread.Start(),Thread.Create(),new Thread().start(),option a
+C#,What is the correct syntax for a `foreach` loop in C#?,foreach (var item in collection) {},for (var item in collection) {},foreach (item in collection) {},for each (item in collection) {},option a
+C,Which symbol is used to declare a comment in C?,//,/*,#,--,option a
+C,Which function is used to read a string in C?,scanf(),gets(),fscanf(),read(),option b
+C,Which header file is required for input and output functions in C?,stdio.h,stdlib.h,string.h,math.h,option a
+C,Which of the following is a correct way to define a variable in C?,int x;,var x;,x = 10;,define x 10;,option a
+C,Which operator is used to assign a value in C?,=,,,!=,option a
+C,How do you declare a constant in C?,const int x = 10;,#define x 10;,static int x = 10;,final int x = 10;,option a
+C,What is the default value of a local variable in C?,0,null,undefined,garbage value,option d
+C,Which of these is used to declare an array in C?,int arr[];,arr[] int;,array int[];,int arr[10];,option d
+C,Which function is used to find the length of a string in C?,strlen(),strlength(),stringLength(),len(),option a
+C,Which keyword is used to create a loop in C?,loop,for,while,do-while,option b
+C,Which of these is the correct syntax for a for loop in C?,for(i = 0; i < 10; i++) {},for(i < 10; i++) {},for(i; i < 10) {},for i = 0; i < 10; i++ {},option a
+C,"What is the output of `printf(""%d"", 10 / 3)` in C?",3,3.33,10,0,option a
+C,What is the correct way to define a function in C?,void functionName(),functionName(),int functionName(),def functionName(),option a
+C,Which operator is used to access a member of a structure in C?,.,->,&,*,option a
+C,Which of the following is used to declare a pointer in C?,*pointer,&pointer,pointer[],pointer*,option a
+C,What is the correct way to define a structure in C?,struct MyStruct { int x; },struct MyStruct; { int x; },struct MyStruct(int x) {},struct MyStruct { int x; };,option d
+C,What does `malloc()` do in C?,Allocates memory,Frees memory,Prints memory,Initializes memory,option a
+C,Which function is used to free dynamically allocated memory in C?,free(),malloc(),dealloc(),delete(),option a
+C,Which function is used to compare two strings in C?,strcmp(),strcompare(),stringcmp(),compare(),option a
+C,Which function is used to concatenate two strings in C?,strcat(),stringcat(),concat(),append(),option a
+C,"What is the output of the following C code: `printf(""%d"", 4 % 3);`",1,2,3,4,option a
+C,Which function is used to open a file in C?,fopen(),open(),fileOpen(),openFile(),option a
+C,What does the `continue` statement do in C?,Skips the current iteration of the loop,Ends the loop,Exits the program,Restarts the program,option a
+C,What is the correct way to declare a function pointer in C?,int (*ptr)(),int ptr()(),ptr int(),int ptr[](),option a
+C,What is the return type of `main()` function in C?,void,int,char,float,option b
+C,Which of the following is used to terminate a loop in C?,break,continue,exit,return,option a
+C,What is the correct way to declare a multi-dimensional array in C?,int arr[2][2];,"int arr[2, 2];","int arr[] = {2, 2};","int arr[][] = {2, 2};",option a
+C,Which of the following is the correct syntax for a while loop in C?,while(condition) {},loop(condition) {},for(condition) {},do-while(condition) {},option a
+C,Which of the following is used to declare a function in C?,void function_name(),function_name(),int function_name(),func(),option a
+C,Which of the following is the correct way to open a file in C?,"fopen(filename, mode)","fileopen(filename, mode)","open(filename, mode)","openfile(filename, mode)",option a
+C,What does the `sizeof` operator do in C?,Returns the size of a variable,Returns the length of an array,Prints the size of the program,Returns the value of a pointer,option a
+C,Which function is used to print formatted output in C?,printf(),sprintf(),fprintf(),write(),option a
+C,Which of the following is used to define a macro in C?,#define,#macro,macro,define,option a
+C,How do you declare a variable in C?,type variable;,type variable = value;,var type variable;,var variable;,option a
+C,What is the correct way to read a character from input in C?,"scanf(""%c"", &ch);","scanf(""%s"", &ch);",gets(ch);,input(ch);,option a
+C,How do you define a constant value in C?,#define CONSTANT 100,const int CONSTANT = 100;,constant int CONSTANT = 100;,const CONSTANT 100;,option a
+C,What does the `sizeof()` operator return in C?,The size of a variable or datatype,The length of an array,The total memory used by the program,The number of elements in a list,option a
+C,What is the correct way to return a value from a function in C?,return value;,return value;,value return;,return();,option b
+C,Which function is used to get the absolute value of a number in C?,abs(),absolute(),fabs(),absvalue(),option a
+MATLAB,Which symbol is used for comments in MATLAB?,%,//,#,--,option a
+MATLAB,What is the default data type for numbers in MATLAB?,double,int,float,single,option a
+MATLAB,Which command is used to clear variables from the workspace?,clear,clc,close,reset,option a
+MATLAB,Which function is used to create a 2D plot in MATLAB?,plot(),graph(),draw(),line(),option a
+MATLAB,How do you create a matrix in MATLAB?,[1 2; 3 4],"[[1 2], [3 4]]","matrix(1,2,3,4)",{1 2; 3 4},option a
+MATLAB,Which command is used to display text in MATLAB?,disp(),echo(),print(),show(),option a
+MATLAB,Which operator is used for element-wise multiplication?,.*,*,.*.,*.,option a
+MATLAB,How do you define a function in MATLAB?,function y = myFunc(x),def myFunc(x):,func y = myFunc(x),function myFunc(x) = y,option a
+MATLAB,Which command is used to close all figures?,close all,clc,clear all,reset,option a
+MATLAB,Which loop is used to iterate a specific number of times?,for loop,while loop,if loop,repeat loop,option a
+MATLAB,How do you create a column vector?,[1;2;3],[1 2 3],"(1,2,3)",{1;2;3},option a
+MATLAB,Which function is used to find the size of a matrix?,size(),length(),rows(),dims(),option a
+MATLAB,Which keyword is used to create a script file?,No keyword needed,script,function,program,option a
+MATLAB,How do you suppress output in MATLAB?,End the line with ;,Use %,Use / /,Use ...,option a
+MATLAB,What does `clc` command do?,Clears command window,Clears workspace,Closes figures,Stops execution,option a
+MATLAB,Which operator is used for matrix multiplication?,*,.*,^,+*+,option a
+MATLAB,Which function is used to create a 3D plot?,plot3(),plot(),mesh(),surf(),option a
+MATLAB,How do you generate random numbers between 0 and 1?,rand(),randi(),random(),rand1(),option a
+MATLAB,Which symbol is used to separate elements in a row vector?,space,comma,semicolon,colon,option a
+MATLAB,What is the starting index of an array in MATLAB?,1,0,-1,Depends on definition,option a
+Dart,Which of the following is used to declare a variable in Dart?,var,let,const,int,option a
+Dart,Which symbol is used for single-line comments in Dart?,//,#,/*,--,option a
+Dart,What is the correct syntax to define a function in Dart?,void functionName(),function functionName(),def functionName(),function() {},option a
+Dart,What is the return type of the main function in Dart?,void,int,String,double,option a
+Dart,Which of these is used to define a constant value in Dart?,final,const,var,immutable,option a
+Dart,Which operator is used to concatenate strings in Dart?,+,concat,&,#,option a
+Dart,Which of the following is a valid list declaration in Dart?,List<int> arr = [];,List arr = [];,int[] arr = [];,List[] arr = [],option a
+Dart,Which of these is used to create an immutable list in Dart?,const List,final List,List const,List immutable,option a
+Dart,Which method is used to add an element to a list in Dart?,add(),insert(),push(),append(),option a
+Dart,What is the syntax for declaring a map in Dart?,"Map<String, String> map = {}","Map<String, String> map = []",Map map = {},map = {},option a
+Dart,Which function is used to read input from the user in Dart?,stdin.readLineSync(),input(),read(),getUserInput(),option a
+Dart,Which keyword is used to define a class in Dart?,class,object,def,type,option a
+Dart,What is the correct way to define a constructor in Dart?,ClassName(),ClassName(parameters),ClassName {}(),constructor(),option b
+Dart,How do you check the type of a variable in Dart?,variable.runtimeType,typeof(variable),checkType(variable),variable.type(),option a
+Dart,Which method is used to split a string into an array in Dart?,split(),explode(),tokenize(),divide(),option a
+Dart,Which of these is the correct way to write a for loop in Dart?,for (int i = 0; i < 10; i++) {},for (i = 0; i < 10; i++) {},for (i: 0..10) {},for i = 0 to 10 {},option a
+Dart,Which of the following is a valid way to define a constant map in Dart?,"const Map<String, int> map = {}","final Map<String, int> map = {}","Map<String, int> map = const {}",All of the above,option d
+Dart,How do you define an abstract class in Dart?,abstract class ClassName {},class abstract ClassName {},abstract ClassName {},class ClassName abstract {},option a
+Dart,What does the 'async' keyword do in Dart?,It defines an asynchronous function,It defines a synchronous function,It makes a function return a future,Both a and c,option d
+Dart,What is the main purpose of the 'await' keyword in Dart?,It waits for a function to complete,It pauses a program,It starts a function,It checks a variable,option a
+Dart,"What is the output of `print([1, 2, 3].map((x) => x * 2).toList());` in Dart?","[2, 4, 6]","[1, 2, 3]","[2, 4, 6] in a Set",Error,option a
+Dart,Which of the following is used to define a setter method in Dart?,set methodName(value) {},setter methodName(value) {},set methodName = value {},methodName(value) {},option a
+Dart,Which operator is used for type checking in Dart?,is,instanceof,typeOf,type,option a
+Dart,How do you declare a default parameter in Dart?,parameterName = defaultValue,parameterName: defaultValue,parameterName defaultValue,parameterName => defaultValue,option a
+Dart,Which function is used to check if an object is of a certain type in Dart?,isInstanceOf(),instanceOf(),is,typeof(),option c
+Dart,How can you implement an interface in Dart?,class implements InterfaceName {},interface InterfaceName {},class InterfaceName {},class extends InterfaceName {},option a
+Dart,Which of the following is a valid Dart expression?,List<int> list = [];,var list = <int>[];,final List<int> list = [];,All of the above,option d
+Dart,How do you handle exceptions in Dart?,try-catch,throw-catch,try-except,catch-except,option a
+Dart,Which method is used to remove an element from a list in Dart?,remove(),delete(),clear(),pop(),option a
+Dart,What is the correct way to instantiate a class in Dart?,ClassName object = ClassName();,ClassName object;,new ClassName();,ClassName new object = ClassName();,option a
+Dart,Which of the following is a valid use of 'super' in Dart?,super(),super.variable,super.method(),All of the above,option d
+Dart,What is the default value of a Dart variable?,null,0,undefined,false,option a
+Dart,Which of the following is used to import libraries in Dart?,import 'library.dart';,use 'library.dart';,require 'library.dart';,include 'library.dart';,option a
+Dart,Which method is used to sort a list in Dart?,sort(),order(),ascending(),arrange(),option a
+Dart,Which of the following is used to define a getter method in Dart?,get methodName,getter methodName,methodName get,get methodName(),option d
+Dart,What does the '??' operator do in Dart?,It checks for null values,It returns a default value if the left operand is null,It checks the type of an object,None of the above,option b
+Dart,What will `print('Hello' * 3);` output in Dart?,HelloHelloHello,Hello3,Error,Hello,option a
+Dart,What does the 'is' keyword do in Dart?,Checks type,Declares a variable,Generates a class,None of the above,option a
+SQL,Which SQL keyword is used to retrieve data from a database?,GET,SELECT,EXTRACT,FETCH,option b
+SQL,Which SQL clause is used to filter results?,WHERE,HAVING,ORDER BY,GROUP BY,option a
+SQL,Which SQL statement is used to update data in a database?,MODIFY,UPDATE,SET,CHANGE,option b
+SQL,Which keyword is used to remove duplicates in a query?,UNIQUE,DISTINCT,REMOVE,FILTER,option b
+SQL,Which SQL function returns the number of records?,SUM(),COUNT(),TOTAL(),NUMBER(),option b
+SQL,Which keyword is used to sort the result-set?,SORT BY,ORDER BY,GROUP BY,ARRANGE BY,option b
+SQL,Which command is used to remove a table from a database?,DELETE,DROP,REMOVE,TRUNCATE,option b
+SQL,What does SQL stand for?,Structured Query Language,Simple Query Language,Structured Quick Language,Simple Quick Language,option a
+SQL,Which clause is used with GROUP BY to filter grouped records?,WHERE,HAVING,ORDER,FILTER,option b
+SQL,Which SQL operator is used to select values within a range?,BETWEEN,IN,WITHIN,RANGE,option a
+SQL,Which statement is used to create a table?,MAKE TABLE,CREATE TABLE,NEW TABLE,INIT TABLE,option b
+SQL,Which constraint ensures that a column cannot have NULL values?,PRIMARY KEY,NOT NULL,UNIQUE,CHECK,option b
+SQL,What is a primary key?,Unique identifier for a record,Secondary identifier,Foreign key,Duplicate key,option a
+SQL,Which keyword is used to prevent duplicate rows?,DISTINCT,UNIQUE,NO DUPLICATE,FILTER,option a
+SQL,Which command is used to delete all records from a table but not the table itself?,DELETE,DROP,REMOVE,TRUNCATE,option d
+SQL,Which function is used to calculate the average of a column?,SUM(),AVG(),MEAN(),MEDIAN(),option b
+SQL,What is the default sort order of ORDER BY?,Descending,Ascending,Random,No default,option b
+SQL,Which clause is used to limit the number of rows returned?,LIMIT,TOP,ROWNUM,FETCH,option a
+SQL,Which join returns only matching rows from two tables?,INNER JOIN,LEFT JOIN,RIGHT JOIN,FULL JOIN,option a
+SQL,Which JOIN returns all records when there is a match in either left or right table?,FULL JOIN,LEFT JOIN,INNER JOIN,RIGHT JOIN,option a
+SQL,Which SQL keyword is used to combine the result-set of two queries?,JOIN,UNION,MERGE,CONNECT,option b
+SQL,Which clause is used to rename a column or table?,CHANGE,ALTER,RENAME,AS,option d
+SQL,Which SQL constraint ensures that all values in a column are different?,UNIQUE,PRIMARY KEY,NOT NULL,FOREIGN KEY,option a
+SQL,Which type of JOIN returns all rows from the left table?,LEFT JOIN,INNER JOIN,RIGHT JOIN,FULL JOIN,option a
+SQL,Which operator is used for pattern matching?,IN,LIKE,BETWEEN,MATCH,option b
+SQL,Which wildcard is used to represent zero or more characters in a LIKE clause?,_,%,*,#,option b
+SQL,Which wildcard represents a single character in a LIKE pattern?,*,%,#,_,option d
+SQL,Which command is used to add a new column to a table?,INSERT COLUMN,ALTER TABLE,UPDATE TABLE,ADD COLUMN,option b
+SQL,Which SQL statement is used to retrieve only unique records?,SELECT,SELECT DISTINCT,SELECT UNIQUE,SELECT NO DUPLICATE,option b
+SQL,Which command is used to insert new data into a table?,INSERT INTO,ADD DATA,NEW RECORD,CREATE RECORD,option a
+TypeScript,What is TypeScript?,A database,A superset of JavaScript,A backend framework,A compiler,option b
+TypeScript,Which keyword is used to declare a variable in TypeScript?,var,let,const,All of the above,option d
+TypeScript,Which of the following is a valid TypeScript type?,number,text,digit,character,option a
+TypeScript,How do you specify an array of numbers in TypeScript?,number[],array<number>,int[],numbers[],option a
+TypeScript,What is used to compile TypeScript into JavaScript?,Node,Webpack,tsc,npm,option c
+TypeScript,Which of these is NOT a basic data type in TypeScript?,number,boolean,tuple,string,option c
+TypeScript,Which keyword defines an interface in TypeScript?,class,type,interface,struct,option c
+TypeScript,What does the 'readonly' keyword do in TypeScript?,Makes a property optional,Makes a property unchangeable,Deletes a property,Copies a property,option b
+TypeScript,How do you define a tuple in TypeScript?,"[number, string]","{number, string}","(number, string)","<number, string>",option a
+TypeScript,Which command installs TypeScript globally?,npm install typescript,npm install typescript -g,npm get typescript,tsc install,option b
+TypeScript,What is the extension of a TypeScript file?,.ts,.js,.tsx,.tsp,option a
+TypeScript,What does 'any' type mean in TypeScript?,Number type,Flexible type (any value),No value,Only string type,option b
+TypeScript,Which TypeScript type represents a value that could either succeed or fail?,Promise,Result,Either,Async,option a
+TypeScript,How do you specify a function parameter as optional?,Using a '?' after parameter name,Using optional(),With undefined value,Using (),option a
+TypeScript,Which operator is used for type assertions?,->,:,as,::,option c
+TypeScript,What is an Enum in TypeScript?,A type of function,A way to define named constants,An array,A class,option b
+TypeScript,Which of these is a correct syntax to create a Type Alias?,alias type,type NewType = string;,define NewType = string;,typealias NewType string,option b
+TypeScript,What is a 'Union Type'?,Combining two objects,Variable that can hold multiple types,An array of types,A class extension,option b
+TypeScript,What does 'never' type represent?,A value that can be anything,A function that never returns,An empty array,Null value,option b
+TypeScript,How do you define a constant variable?,let,var,const,constant,option c
+TypeScript,Which tool helps in checking types during compilation?,Lint,tsc,Webpack,Node,option b
+TypeScript,Which feature allows a class to inherit from another?,extends,inherits,implements,uses,option a
+TypeScript,What keyword is used to implement an interface?,extend,implement,implements,use,option c
+TypeScript,What does 'typeof' operator do in TypeScript?,Create a type,Check the data type,Compare types,Change type,option b
+TypeScript,Which of the following is used for async programming?,Promises,Classes,Interfaces,Enums,option a
+TypeScript,How do you specify a function return type?,function name: type,function() -> type,function(): type,function => type,option c
+TypeScript,How do you represent a nullable type?,string?,string | null,null string,optional string,option b
+TypeScript,Which of the following describes 'Generics' in TypeScript?,Reusable code for different types,Specific code for a type,Class inheritance,Strict typing,option a
+TypeScript,Which flag in tsconfig.json enables strict type checking?,strictMode,checkAll,strict,typesafe,option c
+AWS,What does AWS stand for?,Amazon Web Services,Azure Web Services,All Web Services,Advanced Web Services,option a
+AWS,Which AWS service is used for compute power?,EC2,S3,RDS,Lambda,option a
+AWS,Which AWS service provides object storage?,EC2,S3,EBS,RDS,option b
+AWS,What is the purpose of Amazon RDS?,Host web applications,Run virtual machines,Store unstructured data,Manage relational databases,option d
+AWS,Which AWS service is serverless?,Lambda,EC2,ECS,S3,option a
+AWS,Which AWS service is used for DNS management?,CloudFront,Route 53,CloudWatch,VPC,option b
+AWS,What is AWS IAM used for?,Monitoring,Networking,Access control,Storage,option c
+AWS,Which service automatically distributes incoming traffic across multiple targets?,Load Balancer,Auto Scaling,Route 53,CloudFront,option a
+AWS,Which AWS service allows you to run code in response to events without provisioning servers?,Lambda,ECS,EC2,CloudTrail,option a
+AWS,Which AWS service is used for monitoring resources and applications?,CloudTrail,CloudFormation,CloudWatch,Elastic Beanstalk,option c
+AWS,Which type of load balancer is best suited for handling HTTP and HTTPS traffic?,Application load balancer,Key value,Document,Search,option a
+AWS,Which AWS service is used for message queueing and processing?,Amazon S3,Amazon SQS,Amazon EC2,Amazon RDS,option b
+AWS,What is AWS CloudTrail used for?,Managing servers,Storing and retrieving data,Monitoring API activity,Running serverless code,option c
+AWS,Which AWS service can be used for real-time messaging and streaming?,Amazon Kinesis,Amazon RDS,Amazon S3,Amazon EC2,option a
+AWS,What is AWS Elastic Beanstalk used for?,Managing containers,Running serverless code,Automating infrastructure deployment,Deploying and scaling web applications,option d
+AWS,Which AWS service is used for managing and monitoring infrastructure and application performance?,Amazon CloudFront,Amazon CloudWatch,Amazon S3,Amazon EC2,option b
+AWS,What is Amazon Route 53 used for?,Content delivery,Monitoring API activity,DNS management,Running serverless code,option c
+AWS,Which AWS service is used for managing and storing relational databases?,Amazon RDS,Amazon S3,Amazon Kinesis,Amazon EC2,option a
+AWS,What is AWS Glue used for?,Storing and retrieving data,Deploying and scaling web applications,Running serverless code,"Extracting, transforming, and loading (ETL) data",option d
+AWS,Which AWS service is used for managing and securing access to APIs?,Amazon API Gateway,Amazon SQS,Amazon S3,Amazon EC2,option a
+AWS,What is AWS Step Functions used for?,Monitoring application performance,Running serverless code,Automating infrastructure deployment,Coordinating distributed applications and microservices,option d
+AWS,Which AWS service is used for managing and storing NoSQL databases?,Amazon DynamoDB,Amazon RDS,Amazon S3,Amazon EC2,option a
+AWS,Which AWS service is used for content delivery and caching?,Amazon CloudFront,Amazon S3,Amazon EC2,Amazon RDS,option a
+React,What is React?,A backend framework,A JavaScript library for building user interfaces,A database,A server,option b
+React,Who developed React?,Google,Microsoft,Facebook,Twitter,option c
+React,What is a component in React?,A server,A part of UI,A database,A library,option b
+React,Which method is used to create a component?,React.make(),React.create(),React.component(),React.createElement(),option d
+React,Which hook is used for state in functional components?,useEffect,useState,useContext,useReducer,option b
+React,Which hook is used for side effects?,useRef,useEffect,useState,useMemo,option b
+React,What is JSX?,JavaScript XML,Java Standard,A backend framework,A CSS library,option a
+React,Which function is used to change the state?,setState,useState,changeState,mutateState,option a
+React,What is the default port number for running React app?,3000,8000,5000,8080,option a
+React,Which command creates a new React app?,create-react-app myapp,new-react myapp,react-create myapp,build-react myapp,option a
+React,Which keyword is used to export a component?,send,export,public,share,option b
+React,What prop is mandatory in a list rendering?,id,key,name,class,option b
+React,Which file holds the main React component structure?,App.js,Index.html,Server.js,Main.jsx,option a
+React,Which hook is used to refer a DOM element?,useRef,useDOM,useState,useEffect,option a
+React,What is the correct way to write a comment inside JSX?,{/ comment /},// comment,<!-- comment -->,* comment *,option a
+React,Props are __________ in React.,Mutable,Immutable,Static,Optional,option b
+React,What does virtual DOM do?,Directly manipulates real DOM,Optimizes DOM updates,Replaces real DOM,Slows down rendering,option b
+React,What is lifting state up?,Passing state to children,Moving state to a common ancestor,Deleting state,Resetting state,option b
+React,What is context API used for?,Database connection,Prop drilling avoidance,State storage,Routing,option b
+React,What does useEffect hook depend on?,State,Props,Dependency array,Context,option c
+React,What is React Router used for?,Navigation between pages,Data fetching,Animation,State Management,option a
+React,Which of the following is NOT a valid React lifecycle method?,componentDidMount,componentWillUpdate,componentDestroy,shouldComponentUpdate,option c
+React,Which hook is used for performance optimization by memoizing?,useMemo,useEffect,useReducer,useLayoutEffect,option a
+React,What is the use of 'React.Fragment'?,Sending API request,Grouping elements without extra DOM node,Styling components,Handling events,option b
+React,Which of the following is correct about keys in React?,They must be globally unique,They must be unique among siblings,They can be duplicated,They are optional,option b
+React,How do you pass a method to a child component?,Using 'method' attribute,Passing it as a prop,Using special method,Using event,option b
+React,What is the command to build a production React app?,npm run build,npm run prod,npm prod build,react-build,option a
+React,What is the purpose of 'StrictMode' in React?,Improve performance,Highlight potential problems,Block errors,Handle events,option b
+React,What is the role of Redux?,Routing,State Management,Component rendering,Styling,option b
+React,What is a pure component?,Component that never updates,Component that does shallow comparison of props and state,Component without props,Component without state,option b
+Azure,What is Microsoft Azure?,A cloud computing platform,A programming language,An operating system,A database management system,option a
+Azure,Which of the following is a service offered by Azure?,Azure Blob Storage,Azure SQL Database,Azure Virtual Machines,All of the above,option d
+Azure,What does IaaS stand for in Azure?,Infrastructure as a Service,Internet as a Service,Integration as a Service,Information as a Service,option a
+Azure,Which Azure service is used for managing virtual machines?,Azure Virtual Machines,Azure App Service,Azure Functions,Azure Kubernetes Service,option a
+Azure,What is Azure Active Directory used for?,Identity and access management,Data storage,Networking,Compute resources,option a
+Azure,Which Azure service provides a platform for building and deploying web applications?,Azure App Service,Azure Blob Storage,Azure SQL Database,Azure Virtual Network,option a
+Azure,What is the purpose of Azure Blob Storage?,Object storage for unstructured data,Relational database management,Virtual machine hosting,Content delivery network,option a
+Azure,Which Azure service is used for creating and managing virtual networks?,Azure Virtual Network,Azure Load Balancer,Azure VPN Gateway,Azure ExpressRoute,option a
+Azure,What does PaaS stand for in Azure?,Platform as a Service,Private as a Service,Public as a Service,Professional as a Service,option a
+Azure,Which Azure service provides a fully managed relational database?,Azure SQL Database,Azure Blob Storage,Azure Virtual Machines,Azure App Service,option a
+Azure,What is Azure Functions used for?,Serverless compute service,Virtual machine management,Networking,Data storage,option a
+Azure,Which Azure service is used for building and deploying containerized applications?,Azure Kubernetes Service,Azure App Service,Azure Functions,Azure Blob Storage,option a
+Azure,What is the purpose of Azure Key Vault?,Managing secrets and keys,Data storage,Virtual machine hosting,Content delivery network,option a
+Azure,Which Azure service provides a content delivery network?,Azure CDN,Azure Load Balancer,Azure VPN Gateway,Azure ExpressRoute,option a
+Azure,What is Azure DevOps used for?,Continuous integration and delivery,Data storage,Networking,Virtual machine hosting,option a
+Azure,Which Azure service is used for monitoring and diagnostics?,Azure Monitor,Azure App Service,Azure Functions,Azure Blob Storage,option a
+Azure,What is Azure Resource Manager?,Management layer for Azure resources,Virtual machine management,Data storage,Networking,option a
+Azure,Which Azure service provides a managed Kubernetes environment?,Azure Kubernetes Service,Azure App Service,Azure Functions,Azure Blob Storage,option a
+Azure,What is the purpose of Azure Load Balancer?,Distribute incoming network traffic,Data storage,Virtual machine hosting,Content delivery network,option a
+Azure,Which Azure service provides a private connection to Azure services?,Azure ExpressRoute,Azure VPN Gateway,Azure Load Balancer,Azure CDN,option a
+Azure,What is Azure Site Recovery used for?,Disaster recovery,Data storage,Virtual machine hosting,Networking,option a
+Azure,Which Azure service provides a fully managed NoSQL database?,Azure Cosmos DB,Azure SQL Database,Azure Blob Storage,Azure App Service,option a
+Azure,What is the purpose of Azure Traffic Manager?,Routing traffic to optimal endpoints,Data storage,Virtual machine hosting,Content delivery network,option a
+Azure,Which Azure service provides a managed Redis cache?,Azure Cache for Redis,Azure App Service,Azure Functions,Azure Blob Storage,option a
+Azure,What is Azure Logic Apps used for?,Automating workflows,Data storage,Virtual machine hosting,Networking,option a
+Azure,Which Azure service provides a managed message queue?,Azure Service Bus,Azure App Service,Azure Functions,Azure Blob Storage,option a
+Azure,What is the purpose of Azure Application Gateway?,Application-level load balancing,Data storage,Virtual machine hosting,Content delivery network,option a
+Azure,Which Azure service provides a managed DNS service?,Azure DNS,Azure App Service,Azure Functions,Azure Blob Storage,option a
+Angular,What is Angular?,A backend language,A JavaScript framework,A database,An operating system,option b
+Angular,Who developed Angular?,Facebook,Google,Microsoft,Twitter,option b
+Angular,What is the command to create a new Angular project?,ng new project-name,create-angular project-name,new-angular project-name,angular-create project-name,option a
+Angular,Which decorator is used to define a component?,@Service,@Module,@Component,@Directive,option c
+Angular,What is the default file extension for Angular templates?,.html,.css,.js,.ts,option a
+Angular,Which file holds the main module of an Angular app?,app.component.ts,main.ts,app.module.ts,index.html,option c
+Angular,What is two-way data binding syntax in Angular?,[()],(),[],{},option a
+Angular,What is the purpose of a Service in Angular?,Manage routing,Share data across components,Create components,Handle CSS,option b
+Angular,Which command is used to generate a component?,ng make component,ng component generate,ng generate component,ng create component,option c
+Angular,What does CLI stand for in Angular?,Component Language Interface,Command Line Interface,Control Level Integration,Client Level Interface,option b
+Angular,What is a module in Angular?,A collection of services,"A collection of components, services, pipes",A single component,A single service,option b
+Angular,Which lifecycle hook is called after a component's view has been fully initialized?,ngOnInit,ngAfterViewInit,ngOnDestroy,ngDoCheck,option b
+Angular,What is dependency injection?,Manual object creation,Injecting dependencies automatically,Using jQuery,Handling APIs,option b
+Angular,Which directive is used to loop over items in Angular?,*ngIf,*ngFor,*ngLoop,*ngRepeat,option b
+Angular,Which symbol is used for property binding?,(),{},[],[()],option c
+Angular,Which pipe is used to format dates?,date,formatDate,calendar,moment,option a
+Angular,Which command runs the Angular application?,ng run,ng start,ng serve,ng dev,option c
+Angular,What does AOT stand for?,Ahead Of Time,After Output Template,Angular Output Template,All Of Template,option a
+Angular,What is the purpose of HttpClientModule?,Handle component events,Connect to APIs,Manage routing,Handle CSS,option b
+Angular,Which of the following is a structural directive?,ngClass,ngStyle,ngIf,ngModel,option c
+Angular,What is interpolation in Angular?,Binding component to service,Binding expressions to the template,Routing management,Dependency Injection,option b
+Angular,Which lifecycle hook is first called?,ngOnInit,constructor,ngAfterViewInit,ngDoCheck,option b
+Angular,Which service is used for routing in Angular?,HttpService,RouterModule,RoutingService,NavigationService,option b
+Angular,Which Angular decorator is used for dependency injection?,@Injectable,@Inject,@Service,@Component,option a
+Angular,What is the use of ngOnDestroy?,Initialization,Cleanup before component is destroyed,Fetch data,Render template,option b
+Angular,Which method is used to navigate to another page programmatically?,navigate(),goTo(),move(),redirect(),option a
+Angular,What is lazy loading in Angular?,Loading CSS,Loading components on demand,Loading modules on demand,Loading services on demand,option c
+Angular,What does the 'async' pipe do?,Makes service async,Automatically subscribes and unsubscribes Observables,Fetches data,Handles routing,option b
+Angular,Which operator is used with observables?,pipe,map,filter,all of the above,option d
+Linux,Which command is used to list all files and directories in the current directory?,ls,dir,pwd,mkdir,option a
+Linux,Which command is used to change the current directory?,cd,mv,rm,cp,option a
+Linux,Which command is used to create a new directory?,mkdir,touch,ls,rm,option a
+Linux,Which command is used to remove a file?,rm,del,rmdir,touch,option a
+Linux,Which command is used to display the current working directory?,pwd,ls,cd,echo,option a
+Linux,Which command is used to view the contents of a file?,cat,ls,mv,cd,option a
+Linux,Which command is used to copy files in Linux?,cp,mv,cat,ln,option a
+Linux,Which command is used to move a file?,mv,cp,touch,rm,option a
+Linux,Which of the following commands is used to search for a file?,find,grep,search,locate,option a
+Linux,Which command is used to change file permissions?,chmod,chown,chgrp,ls,option a
+Linux,What is the command to display the manual page for a command?,man,help,info,guide,option a
+Linux,Which command is used to list all running processes?,ps,top,kill,bg,option a
+Linux,Which command is used to terminate a process in Linux?,kill,stop,exit,end,option a
+Linux,What does the 'chmod' command do in Linux?,Change file permissions,Change file owner,Change file name,Change file location,option a
+Linux,Which command is used to display the system's memory usage?,free,mem,ram,ps,option a
+Linux,Which command is used to display the disk usage in Linux?,df,du,disk,ls,option a
+Linux,Which command is used to show the last few lines of a file?,tail,head,cat,more,option a
+Linux,Which command is used to display all users on the system?,cat /etc/passwd,users,who,list,option a
+Linux,Which of these is a Linux package manager?,apt,yum,pacman,all of the above,option d
+Linux,Which command is used to view the available disk partitions?,fdisk,diskpart,lsblk,df,option a
+Linux,Which command is used to compress files in Linux?,tar,gzip,zip,all of the above,option d
+Linux,What does the 'grep' command do?,Searches for a pattern in a file,Removes files,Shows system logs,Shows running processes,option a
+Linux,Which command is used to show system information?,uname,sysinfo,hostname,info,option a
+Linux,Which of the following is the root user in Linux?,root,admin,superuser,user,option a
+Linux,Which of these commands is used to create a symbolic link in Linux?,ln -s,link,symlink,ln,option a
+Linux,Which command is used to install a package in Linux using apt?,apt-get install,yum install,pacman -S,rpm install,option a
+Linux,Which command is used to display the network configuration in Linux?,ifconfig,ping,netstat,route,option a
+Linux,Which command is used to update the system packages in Linux?,apt-get update,yum update,pacman -Syu,all of the above,option d
+Linux,Which command is used to monitor system resources in real time?,top,ps,iotop,htop,option a
+Linux,Which command is used to find the location of a command in Linux?,which,whereis,locate,find,option a
+Linux,Which command is used to shut down a Linux system?,shutdown,poweroff,halt,reboot,option a
+Linux,Which of these is a Linux file system?,ext4,ntfs,fat32,exFAT,option a
+Google Cloud,What is Google Cloud Platform (GCP)?,A cloud computing service by Google,A search engine,A social media platform,A hardware product,option a
+Google Cloud,Which service is used for scalable virtual machines in GCP?,Compute Engine,App Engine,Cloud Functions,Kubernetes Engine,option a
+Google Cloud,What is the default storage class in Google Cloud Storage?,Standard,Nearline,Coldline,Archive,option a
+Google Cloud,Which GCP service is designed for container orchestration?,Kubernetes Engine,Compute Engine,App Engine,Cloud Functions,option a
+Google Cloud,What is BigQuery used for in GCP?,Data warehousing and analytics,Machine learning,Object storage,Virtual machines,option a
+Google Cloud,Which service provides serverless compute capabilities in GCP?,Cloud Functions,Compute Engine,App Engine,Kubernetes Engine,option a
+Google Cloud,What is the purpose of Google Cloud Pub/Sub?,Message queuing and real-time messaging,Data storage,Virtual machines,Machine learning,option a
+Google Cloud,Which GCP service is used for managed Kubernetes clusters?,Kubernetes Engine,Compute Engine,App Engine,Cloud Functions,option a
+Google Cloud,What is the primary use case for Google Cloud Spanner?,Global distributed relational database,Object storage,Data warehousing,Serverless compute,option a
+Google Cloud,Which service provides a fully managed NoSQL document database in GCP?,Firestore,Bigtable,Cloud SQL,Cloud Spanner,option a
+Google Cloud,What is the purpose of Google Cloud Identity and Access Management (IAM)?,Manage access to resources,Store data,Run virtual machines,Deploy applications,option a
+Google Cloud,Which GCP service is used for real-time data analytics?,BigQuery,Cloud Storage,Compute Engine,Cloud Functions,option a
+Google Cloud,What is the function of Google Cloud Load Balancing?,Distribute traffic across resources,Store data,Run virtual machines,Manage access control,option a
+Google Cloud,Which service allows you to run Docker containers in GCP?,Kubernetes Engine,Compute Engine,App Engine,Cloud Functions,option a
+Google Cloud,What is the purpose of Google Cloud Monitoring?,Monitor and manage cloud resources,Store data,Run virtual machines,Deploy applications,option a
+Google Cloud,Which service provides a managed relational database in GCP?,Cloud SQL,Firestore,Bigtable,Cloud Spanner,option a
+Google Cloud,What is the purpose of Google Cloud Storage?,Store and retrieve data,Run virtual machines,Deploy applications,Monitor resources,option a
+Google Cloud,Which GCP service is used for machine learning model deployment?,AI Platform,BigQuery,Compute Engine,Cloud Functions,option a
+Google Cloud,What is the primary use case for Google Cloud Bigtable?,Large-scale NoSQL database,Data warehousing,Relational database,Serverless compute,option a
+Google Cloud,Which service provides a managed Apache Kafka service in GCP?,Pub/Sub,Dataflow,Dataproc,Cloud Pub/Sub,option d
+Google Cloud,What is the purpose of Google Cloud Deployment Manager?,Manage infrastructure as code,Store data,Run virtual machines,Deploy applications,option a
+Google Cloud,Which service provides a fully managed data pipeline in GCP?,Dataflow,BigQuery,Compute Engine,Cloud Functions,option a
+Google Cloud,What is the purpose of Google Cloud Firestore?,Store and sync data for client- and server-side development,Run virtual machines,Deploy applications,Monitor resources,option a
+Google Cloud,Which service provides a managed Hadoop and Spark service in GCP?,Dataproc,BigQuery,Compute Engine,Cloud Functions,option a
+Google Cloud,What is the primary use case for Google Cloud Dataprep?,Data preparation and cleaning,Data storage,Machine learning,Data warehousing,option a
+Google Cloud,Which service provides a managed Apache Beam service in GCP?,Dataflow,BigQuery,Compute Engine,Cloud Functions,option a
+DevOps,What is DevOps?,A set of practices combining development and operations,A programming language,A cloud computing platform,A database management system,option a
+DevOps,Which tool is commonly used for continuous integration?,Jenkins,Docker,Kubernetes,Terraform,option a
+DevOps,What is continuous delivery?,Automated deployment of code to production,Manual deployment of code to production,Automated testing of code,Manual testing of code,option a
+DevOps,Which tool is used for containerization?,Docker,Jenkins,Kubernetes,Terraform,option a
+DevOps,What is Infrastructure as Code (IaC)?,Managing infrastructure using code,Managing infrastructure manually,Managing infrastructure using scripts,Managing infrastructure using GUI tools,option a
+DevOps,Which tool is used for configuration management?,Ansible,Docker,Kubernetes,Jenkins,option a
+DevOps,What is the purpose of a CI/CD pipeline?,Automating the software delivery process,Manual deployment of code,Automated testing of code,Manual testing of code,option a

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Quiz: <span th:text="${language}">Language</span></title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h2 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+        
+        #quiz-form {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        #timer {
+            font-weight: bold;
+            margin-bottom: 25px;
+            font-size: 1.2em;
+            text-align: center;
+            color: #e74c3c;
+        }
+        
+        .question-container {
+            display: none;
+            animation-duration: 0.5s;
+            padding: 20px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            margin-bottom: 20px;
+        }
+        
+        .question-container.active {
+            display: block;
+            animation-name: fadeIn;
+        }
+        
+        .question-text {
+            font-size: 1.1em;
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            padding: 12px 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        input[type="radio"] {
+            margin-right: 10px;
+            accent-color: #3498db;
+        }
+        
+        #submit-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1em;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(52, 152, 219, 0.3);
+        }
+        
+        #submit-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(52, 152, 219, 0.4);
+        }
+        
+        .progress-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            border-radius: 10px;
+            background-color: #3498db;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #3498db;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            color: white;
+        }
+        
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .time-warning {
+            animation: pulse 0.5s infinite;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Loading Screen -->
+<div class="loading-screen animate__animated animate__fadeIn" id="loading-screen">
+    <div class="loader"></div>
+    <h2>Preparing your quiz...</h2>
+</div>
+
+<div class="animate__animated animate__fadeIn" id="quiz-content" style="display: none;">
+    <h2>Quiz: <span th:text="${language}">Language</span></h2>
+
+    <form th:action="@{/submit-quiz}" method="post" id="quiz-form">
+        <input type="hidden" name="language" th:value="${language}">
+        
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        
+        <div id="timer" class="animate__animated">Time left: <span id="time">5</span> seconds</div>
+
+        <div th:each="q, stat : ${questions}" 
+             th:id="'question-' + ${stat.index}" 
+             class="question-container">
+            <p class="question-text">Question <span th:text="${stat.count}">1</span>: 
+               <span th:text="${q.question}">Question text</span></p>
+            <ul>
+                <li class="animate__animated">
+                    <label>
+                        <input type="radio" th:name="'q' + ${q.id}" th:value="'option a'">
+                        <span th:text="${q.optionA}">Option A</span>
+                    </label>
+                </li>
+                <li class="animate__animated">
+                    <label>
+                        <input type="radio" th:name="'q' + ${q.id}" th:value="'option b'">
+                        <span th:text="${q.optionB}">Option B</span>
+                    </label>
+                </li>
+                <li class="animate__animated">
+                    <label>
+                        <input type="radio" th:name="'q' + ${q.id}" th:value="'option c'">
+                        <span th:text="${q.optionC}">Option C</span>
+                    </label>
+                </li>
+                <li class="animate__animated">
+                    <label>
+                        <input type="radio" th:name="'q' + ${q.id}" th:value="'option d'">
+                        <span th:text="${q.optionD}">Option D</span>
+                    </label>
+                </li>
+            </ul>
+        </div>
+
+        <button type="submit" id="submit-btn" style="display: none;">Submit Quiz</button>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    // Simulate loading
+    setTimeout(() => {
+        document.getElementById('loading-screen').classList.add('animate__fadeOut');
+        document.getElementById('quiz-content').style.display = 'block';
+        
+        setTimeout(() => {
+            document.getElementById('loading-screen').style.display = 'none';
+            document.getElementById('quiz-content').classList.add('animate__fadeIn');
+        }, 500);
+    }, 2000);
+
+    const questions = document.querySelectorAll('.question-container');
+    const options = document.querySelectorAll('li');
+    let current = 0;
+    let timeLeft = 5;  // 5 seconds per question
+    const timerSpan = document.getElementById("time");
+    const progressBar = document.getElementById("progress-bar");
+    const totalQuestions = questions.length;
+
+    // Initialize progress bar
+    progressBar.style.width = `${(1 / totalQuestions) * 100}%`;
+
+    function showQuestion(index) {
+        // Animate out current question
+        if (questions[current]) {
+            questions[current].classList.remove('active');
+            questions[current].classList.add('animate__fadeOut');
+        }
+        
+        setTimeout(() => {
+            // Hide all questions
+            questions.forEach(q => {
+                q.style.display = "none";
+                q.classList.remove('animate__fadeOut', 'animate__fadeIn');
+            });
+            
+            // Show new question
+            if (index < questions.length) {
+                questions[index].style.display = "block";
+                questions[index].classList.add('active', 'animate__fadeIn');
+                
+                // Animate options one by one
+                const questionOptions = questions[index].querySelectorAll('li');
+                questionOptions.forEach((option, i) => {
+                    setTimeout(() => {
+                        option.classList.add('animate__fadeInLeft');
+                    }, i * 100);
+                });
+                
+                timeLeft = 5;
+                timerSpan.textContent = timeLeft;
+                timerSpan.classList.remove('time-warning');
+                
+                // Update progress bar
+                progressBar.style.width = `${((index + 1) / totalQuestions) * 100}%`;
+                
+                current = index;
+            } else {
+                // Quiz completed
+                document.getElementById("quiz-form").submit();
+            }
+        }, 500);
+    }
+
+    function startTimer() {
+        const timerInterval = setInterval(() => {
+            timeLeft--;
+            timerSpan.textContent = timeLeft;
+            
+            // Add warning animation when time is running out
+            if (timeLeft <= 3) {
+                timerSpan.classList.add('time-warning');
+            }
+            
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                showQuestion(current + 1);
+                
+                // Start timer for next question
+                if (current + 1 < questions.length) {
+                    setTimeout(startTimer, 1000);
+                }
+            }
+        }, 1000);
+    }
+
+    // Start the quiz
+    setTimeout(() => {
+        showQuestion(0);
+        startTimer();
+    }, 500);
+</script>
+
+</body>
+</html>
